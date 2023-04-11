@@ -2,8 +2,9 @@ import { create } from "@storybook/theming/create";
 
 export default create({
   base: "dark",
+
   // Typography
-  fontBase: "Cagoit, Helvetica, Arial, sans-serif",
+  fontBase: `var(--font-outfit), var(--font-spoqa), Helvetica, Arial, sans-serif`,
   fontCode: "monospace",
 
   brandTitle: "insd",

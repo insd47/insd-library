@@ -2,18 +2,23 @@ import { Theme, css } from "@emotion/react";
 
 const global = (theme: Theme) => css`
   :root {
-    font-family: var(--font);
     font-size: 14px;
     color: ${theme.colors.text.main};
     -webkit-tap-highlight-color: transparent;
     user-select: none;
     touch-action: manipulation;
     word-break: keep-all;
+    white-space: normal;
     box-sizing: border-box;
 
-    --willchangedefault: background-color, border-color, color;
     -webkit-overflow-scrolling: touch;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  body {
+    font-family: var(--font-outfit), var(--font-spoqa), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   :root:has(body[data-reduce="true"]) *,
@@ -26,7 +31,6 @@ const global = (theme: Theme) => css`
   input,
   button,
   select {
-    font-family: var(--font);
     box-sizing: border-box;
 
     &:focus-visible {
@@ -51,13 +55,14 @@ const global = (theme: Theme) => css`
 
   html {
     background-color: ${theme.colors.background.main};
-    will-change: background-color;
     -ms-touch-action: manipulation;
     touch-action: manipulation;
   }
 
   html.transition,
-  html.transition button {
+  html.transition *,
+  html.transition *:after,
+  html.transition *:before {
     transition: background-color 300ms, border-color 300ms !important;
   }
 `;

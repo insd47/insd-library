@@ -11,8 +11,6 @@ import {
 import colors from "./colors";
 import global from "./global";
 
-import "./fonts.css";
-
 import { Theme, ThemeMode, UserThemeMode } from "./types";
 
 const THEME_MODE = "theme-mode";
@@ -24,7 +22,6 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
   useLayoutEffect(() => {
     const body = document.querySelector("body");
 
-    // add _sheet element
     if (!document.getElementById("_sheet")) {
       const sheetContainer = document.createElement("div");
       sheetContainer.id = "_sheet";
@@ -32,24 +29,27 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
     }
 
     if (window.matchMedia) {
-      // reduce motion
       window.matchMedia("(prefers-reduced-motion)").matches &&
         body?.setAttribute("data-reduce", "true");
     }
 
-    // get user mode from storage
-    const savedTheme = localStorage.getItem(THEME_MODE);
-    setUserMode(savedTheme ? (savedTheme as UserThemeMode) : "auto");
+    const savedTheme = localStorage.getItem(THEME_MODE) as UserThemeMode;
+    if (savedTheme) {
+      setUserMode(savedTheme);
+      setMode(getNewMode(savedTheme));
+    } else {
+      localStorage.setItem(THEME_MODE, "auto");
+      setMode(getNewMode("auto"));
+    }
   }, []);
 
-  // subscribe user when user mode is "auto"
   const listener = useCallback((event: MediaQueryListEvent) => {
-    if (event.matches) setMode("dark");
-    else setMode("light");
+    if (event.matches) setMode("light");
+    else setMode("dark");
   }, []);
 
   useEffect(() => {
-    const MediaQuery = window?.matchMedia("(prefers-color-scheme: dark)");
+    const MediaQuery = window?.matchMedia("(prefers-color-scheme: light)");
 
     if (userMode === "auto") {
       MediaQuery && MediaQuery.addEventListener("change", listener);
@@ -60,18 +60,22 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
     };
   }, [userMode]);
 
-  // change theme
+  const getNewMode = useCallback((userMode: UserThemeMode) => {
+    let newMode: ThemeMode = "dark";
+
+    if (userMode === "auto") {
+      if (window.matchMedia("(prefers-color-scheme: light)").matches)
+        newMode = "light";
+    } else {
+      newMode = userMode;
+    }
+
+    return newMode;
+  }, []);
+
   const change = useCallback(
     (userMode: UserThemeMode) => {
-      let newMode: ThemeMode = "dark";
-
-      // check system theme
-      if (userMode === "auto") {
-        if (window.matchMedia("(prefers-color-scheme: light)").matches)
-          newMode = "light";
-      } else {
-        newMode = userMode;
-      }
+      const newMode = getNewMode(userMode);
 
       if (newMode !== mode) {
         document.documentElement?.classList.add("transition");
@@ -87,7 +91,6 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
     [mode]
   );
 
-  // theme object
   const theme: Theme = useMemo(
     () => ({
       mode: mode,
