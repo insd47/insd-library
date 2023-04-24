@@ -47,6 +47,11 @@ const global = (theme: Theme) => css`
     height: 100%;
   }
 
+  #storybook-docs {
+    height: 100%;
+    overflow-y: auto;
+  }
+
   #root,
   #_next {
     overflow: hidden;

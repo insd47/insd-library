@@ -10,6 +10,7 @@ import {
 
 import { Icon, Loading } from "../../generic";
 import { IconType } from "../../generic/Icon/types";
+import { usePointerEvents } from "../../../tools";
 
 type ButtonType = "filled" | "linear" | "warn" | "transparent";
 type ButtonSize = "big" | "medium" | "small" | "tiny";
@@ -37,6 +38,8 @@ interface StyledButtonProps extends CommonProps {
   buttonType?: ButtonType;
   CSSValues?: CSSProperties;
   isLoading?: boolean;
+  isHover?: boolean;
+  isClicked?: boolean;
 }
 
 const StyledButton = styled.button<StyledButtonProps>`
@@ -45,12 +48,14 @@ const StyledButton = styled.button<StyledButtonProps>`
   border-radius: 8px;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: background-color 0.1s, border-color 0.1s, color 0.1s;
+  transition: background-color 0.1s, border-color 0.1s, color 0.1s,
+    transform 0.1s;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
+  font-weight: 400;
 
   &[disabled] {
     ${({ theme }) => `
@@ -72,23 +77,26 @@ const StyledButton = styled.button<StyledButtonProps>`
     `}
   }
 
-  ${({ buttonType, theme }) =>
+  ${({ isHover, isClicked }) =>
+    isHover && isClicked && "transform: scale(0.98);"}
+
+  ${({ buttonType, theme, isHover, isClicked }) =>
     buttonType === "filled"
       ? `
     border-color: transparent;
     background-color: ${theme.colors.text.main};
     color: ${theme.colors.background.main};
 
-    &[data-istouched="true"] {
-      background-color: ${theme.colors.text.solid(80)};
-    }
-
-    &[data-ishover="true"] {
-      background-color: ${theme.colors.text.solid(80)};
-    }
-
-    &[data-isclicked="true"] {
-      background-color: ${theme.colors.text.solid(65)};
+    ${
+      isHover
+        ? isClicked
+          ? `
+    background-color: ${theme.colors.text.solid(65)};
+    `
+          : `
+    background-color: ${theme.colors.text.solid(80)};
+    `
+        : ""
     }
     `
       : buttonType === "linear"
@@ -97,54 +105,53 @@ const StyledButton = styled.button<StyledButtonProps>`
     background-color: ${theme.colors.background.main};
     color: ${theme.colors.text.main};
 
-    &[data-istouched="true"] {
-      border-color: ${theme.colors.gray.solid(70)};
-      background-color: ${theme.colors.text.solid(10)};
-    }
-
-    &[data-ishover="true"] {
-      border-color: ${theme.colors.gray.solid(70)};
-    }
-
-    &[data-isclicked="true"] {
-      background-color: ${theme.colors.text.solid(10)};
-      border-color: ${theme.colors.gray.solid(70)};
+    ${
+      isHover
+        ? isClicked
+          ? `
+    background-color: ${theme.colors.text.solid(10)};
+    border-color: ${theme.colors.gray.solid(70)};
+    `
+          : `
+    border-color: ${theme.colors.gray.solid(70)};
+    `
+        : ""
     }
     `
       : buttonType === "warn"
       ? `
-      border-color: transparent;
-      color: ${theme.colors.white.main};
-      background-color: ${theme.colors.red.main};
+    border-color: transparent;
+    color: ${theme.colors.white.main};
+    background-color: ${theme.colors.red.main};
 
-      &[data-istouched="true"] {
-        background-color: ${theme.colors.red.solid(80)};
-      }
-  
-      &[data-ishover="true"] {
-        background-color: ${theme.colors.red.solid(80)};
-      }
-  
-      &[data-isclicked="true"] {
-        background-color: ${theme.colors.red.solid(65)};
-      }
+    ${
+      isHover
+        ? isClicked
+          ? `
+    background-color: ${theme.colors.red.solid(65)};
+    `
+          : `
+    background-color: ${theme.colors.red.solid(80)};
+    `
+        : ""
+    }
   `
       : `
-      border: 0;
-      background-color: transparent;
-      color: ${theme.colors.text.main};
+  border: 0;
+  background-color: transparent;
+  color: ${theme.colors.text.main};
 
-      &[data-istouched="true"] {
-        background-color: ${theme.colors.gray.solid(20)};
-      }
-  
-      &[data-ishover="true"] {
-        background-color: ${theme.colors.gray.solid(20)};
-      }
-  
-      &[data-isclicked="true"] {
-        background-color: ${theme.colors.gray.solid(35)};
-      }
+  ${
+    isHover
+      ? isClicked
+        ? `
+  background-color: ${theme.colors.gray.solid(35)};
+  `
+        : `
+  background-color: ${theme.colors.gray.solid(20)};
+  `
+      : ""
+  }
       `}
 
   ${({ CSSValues }) => ({ ...CSSValues })}
@@ -191,6 +198,8 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(
       typeof loading === "boolean" ? loading : false
     );
 
+    const { pointerEvents, pointerValues } = usePointerEvents();
+
     useEffect(() => {
       if (loading === false) {
         setTimeout(() => setHasLoading(false), 200);
@@ -208,6 +217,8 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(
         isLoading={loading}
         CSSValues={CSSValues}
         onClick={action ? () => action() : undefined}
+        {...pointerEvents}
+        {...pointerValues}
         {...props}
       >
         {icon && (
