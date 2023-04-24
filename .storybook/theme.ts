@@ -33,7 +33,7 @@ export default create({
 
   // Form colors
   inputBg: "black",
-  inputBorder: "black",
-  inputTextColor: "black",
-  inputBorderRadius: 2,
+  inputBorder: "rgba(136, 136, 136, 0.4)",
+  inputTextColor: "white",
+  inputBorderRadius: 8,
 });

@@ -36,9 +36,6 @@ interface TextProps extends CommonProps {
 }
 
 const StyledText = styled.p<StyledTextProps>`
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-
   ${({ maxLines }) =>
     maxLines &&
     `

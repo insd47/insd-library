@@ -9,8 +9,8 @@ import {
   Block,
   Icon,
   Loading,
-} from "../generic";
-import { Button } from "../input";
+} from "../components/generic";
+import { Button } from "../components/input";
 import { isMobile } from "../../tools";
 
 const ThemeTest = () => {

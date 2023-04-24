@@ -10,7 +10,7 @@ import {
 
 import { Icon, Loading } from "../../generic";
 import { IconType } from "../../generic/Icon/types";
-import { usePointerEvents } from "../../../tools";
+import { usePointerEvents } from "../../../../tools";
 
 type ButtonType = "filled" | "linear" | "warn" | "transparent";
 type ButtonSize = "big" | "medium" | "small" | "tiny";
