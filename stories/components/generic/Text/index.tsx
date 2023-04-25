@@ -33,6 +33,7 @@ interface TextProps extends CommonProps {
   self?: CSSProperties["alignSelf"];
   margin?: CSSProperties["margin"];
   padding?: CSSProperties["padding"];
+  inherit?: boolean;
 }
 
 const StyledText = styled.p<StyledTextProps>`
@@ -58,6 +59,7 @@ const Text = forwardRef<HTMLParagraphElement, PropsWithChildren<TextProps>>(
       inline,
       type = "uin",
       template = 2,
+      inherit = false,
       size,
       weight,
       line,
@@ -77,15 +79,24 @@ const Text = forwardRef<HTMLParagraphElement, PropsWithChildren<TextProps>>(
       alignSelf: self,
       margin: margin ? margin : 0,
       padding: padding ? padding : 0,
-      fontSize: size
-        ? size
-        : TextStyles[type][FindTemplate(type, template)].size,
-      lineHeight: line
-        ? line.toString() + "px"
-        : TextStyles[type][FindTemplate(type, template)].line.toString() + "px",
-      fontWeight: weight
-        ? Weights[weight]
-        : TextStyles[type][FindTemplate(type, template)].weight,
+      ...(!inherit
+        ? {
+            fontSize: size
+              ? size
+              : TextStyles[type][FindTemplate(type, template)].size,
+            lineHeight: line
+              ? line.toString() + "px"
+              : TextStyles[type][FindTemplate(type, template)].line.toString() +
+                "px",
+            fontWeight: weight
+              ? Weights[weight]
+              : TextStyles[type][FindTemplate(type, template)].weight,
+          }
+        : {
+            fontSize: size ? size : "inherit",
+            lineHeight: line ? line.toString() + "px" : "inherit",
+            fontWeight: weight ? Weights[weight] : "inherit",
+          }),
     };
 
     return (

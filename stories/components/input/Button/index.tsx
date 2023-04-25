@@ -58,6 +58,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   font-weight: 400;
 
   &[disabled] {
+    cursor: not-allowed;
     ${({ theme }) => `
     border: 1px dashed ${theme.colors.gray.solid(50)};
     color: ${theme.colors.gray.solid(70)};
