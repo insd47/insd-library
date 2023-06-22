@@ -1,27 +1,7 @@
 import styled from "@emotion/styled";
-import {
-  CSSProperties,
-  PropsWithChildren,
-  forwardRef,
-  HTMLAttributes,
-} from "react";
+import { PropsWithChildren, forwardRef } from "react";
 
-import { IconType } from "./types";
-
-interface CommonProps extends HTMLAttributes<HTMLDivElement> {}
-
-interface IconProps extends HTMLAttributes<HTMLDivElement> {
-  type?: IconType;
-  size?: CSSProperties["fontSize"];
-  margin?: CSSProperties["margin"];
-  padding?: CSSProperties["padding"];
-  right?: CSSProperties["marginRight"];
-  disabled?: boolean;
-}
-
-interface StyledIconProps extends CommonProps {
-  CSSValues?: CSSProperties;
-}
+import { StyledIconProps, IconProps } from "./types";
 
 const StyledIcon = styled.i<StyledIconProps>`
   font-family: var(--font-icon);

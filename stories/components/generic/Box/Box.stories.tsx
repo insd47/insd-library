@@ -21,12 +21,12 @@ type Story = StoryObj<typeof Box>;
 
 export const Vertical: Story = {
   args: {
-    d: "v",
+    direction: "vertical",
   },
 };
 
 export const Horizontal: Story = {
   args: {
-    d: "h",
+    direction: "horizontal",
   },
 };

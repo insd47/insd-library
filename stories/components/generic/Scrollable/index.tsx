@@ -1,30 +1,7 @@
 import styled from "@emotion/styled";
-import {
-  CSSProperties,
-  ElementType,
-  forwardRef,
-  HTMLAttributes,
-  PropsWithChildren,
-} from "react";
+import { forwardRef, PropsWithChildren } from "react";
 
-interface CommonProps extends HTMLAttributes<HTMLDivElement> {}
-
-interface ScrollableProps extends CommonProps {
-  component?: ElementType;
-  flex?: CSSProperties["flex"];
-  self?: CSSProperties["alignSelf"];
-  margin?: CSSProperties["margin"];
-  padding?: CSSProperties["padding"];
-  bottom?: CSSProperties["marginBottom"];
-  x?: boolean;
-  y?: boolean;
-}
-
-interface StyledScrollableProps extends CommonProps {
-  CSSValues?: CSSProperties;
-  posX?: boolean;
-  posY?: boolean;
-}
+import { ScrollableProps, StyledScrollableProps } from "./types";
 
 const StyledScrollable = styled.div<StyledScrollableProps>(
   ({ CSSValues, posX, posY }) => `
@@ -42,22 +19,11 @@ const Scrollable = forwardRef<
   PropsWithChildren<ScrollableProps>
 >(
   (
-    {
-      children,
-      flex,
-      self,
-      margin,
-      padding,
-      bottom,
-      x = false,
-      y = true,
-      ...props
-    },
+    { children, flex, margin, padding, bottom, x = false, y = true, ...props },
     ref
   ) => {
     const CSSValues = {
       flex,
-      alignSelf: self,
       margin,
       padding,
       marginBottom: bottom,

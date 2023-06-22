@@ -21,15 +21,19 @@ const ThemeTest = () => {
 
   return (
     <Scrollable y>
-      <Box gap={18} h={mobile ? "stretch" : "left"} padding="30px 20px">
+      <Box
+        gap={18}
+        horizontal={mobile ? "stretch" : "left"}
+        padding="30px 20px"
+      >
         <Text type="title" template={1}>
           안녕 Korean.
         </Text>
         <Text>
-          <Icon type="hamburger" size={20} />
+          <Icon type="eye" size={20} />
           이것은 Flexbox 이다.
         </Text>
-        <Box d={mobile ? "v" : "h"} gap={20}>
+        <Box direction={mobile ? "vertical" : "horizontal"} gap={20}>
           <Disabler>
             <Button
               stretch={mobile}
@@ -77,12 +81,12 @@ const ThemeTest = () => {
             label="버튼 비활성화"
           /> */}
         </Box>
-        <Box d="h" gap={20}>
+        <Box direction="horizontal" gap={20}>
           <Loading size="small" />
           <Loading size="medium" />
           <Loading size="big" />
         </Box>
-        <Box d="h" gap={20} v="center">
+        <Box direction="horizontal" gap={20} vertical="center">
           <Button
             icon="link"
             loading={isLoading}

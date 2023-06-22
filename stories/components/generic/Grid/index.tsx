@@ -1,33 +1,6 @@
 import styled from "@emotion/styled";
-import {
-  CSSProperties,
-  PropsWithChildren,
-  forwardRef,
-  HTMLAttributes,
-  ElementType,
-} from "react";
-
-type GridDirection = "vertical" | "horizontal";
-
-interface CommonProps extends HTMLAttributes<HTMLDivElement> {}
-
-interface GridProps extends CommonProps {
-  component?: ElementType;
-  d?: GridDirection;
-  flex?: CSSProperties["flex"];
-  self?: CSSProperties["alignSelf"];
-  margin?: CSSProperties["margin"];
-  padding?: CSSProperties["padding"];
-  bottom?: CSSProperties["marginBottom"];
-  v?: CSSProperties["gridTemplateRows"];
-  h?: CSSProperties["gridTemplateColumns"];
-  gap?: CSSProperties["rowGap"];
-  lineGap?: CSSProperties["rowGap"];
-}
-
-interface StyledGridProps extends CommonProps {
-  CSSValues?: CSSProperties;
-}
+import { PropsWithChildren, forwardRef } from "react";
+import { StyledGridProps, GridProps } from "./types";
 
 const StyledGrid = styled.div<StyledGridProps>`
   display: grid;
@@ -40,31 +13,29 @@ const Grid = forwardRef<HTMLDivElement, PropsWithChildren<GridProps>>(
     {
       children,
       component = "div",
-      d,
+      direction,
       flex,
-      self,
       margin,
       padding,
       bottom,
-      v,
-      h,
+      vertical,
+      horizontal,
       gap,
       lineGap,
       ...props
     },
     ref
   ) => {
-    const isHorizontal = h || d === "horizontal";
+    const isHorizontal = horizontal || direction === "horizontal";
 
     const CSSValues = {
-      gridAutoFlow: d && d === "horizontal" ? "column" : "row",
+      gridAutoFlow: direction && direction === "horizontal" ? "column" : "row",
       flex,
-      alignSelf: self,
       margin,
       padding,
       marginBottom: bottom,
-      gridTemplateRows: v,
-      gridTemplateColumns: h,
+      gridTemplateRows: vertical,
+      gridTemplateColumns: horizontal,
       rowGap: isHorizontal ? lineGap : gap,
       columnGap: isHorizontal ? gap : lineGap,
     };

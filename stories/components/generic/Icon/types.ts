@@ -1,3 +1,5 @@
+import { CSSProperties, HTMLAttributes } from "react";
+
 export type IconType =
   | "bell-d-f"
   | "bell-d"
@@ -86,3 +88,18 @@ export type IconType =
   | "trash-f"
   | "folder"
   | "folder-f";
+
+interface CommonProps extends HTMLAttributes<HTMLDivElement> {}
+
+export interface IconProps extends HTMLAttributes<HTMLDivElement> {
+  type?: IconType;
+  size?: CSSProperties["fontSize"];
+  margin?: CSSProperties["margin"];
+  padding?: CSSProperties["padding"];
+  right?: CSSProperties["marginRight"];
+  disabled?: boolean;
+}
+
+export interface StyledIconProps extends CommonProps {
+  CSSValues?: CSSProperties;
+}

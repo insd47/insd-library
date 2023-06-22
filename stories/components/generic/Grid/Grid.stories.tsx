@@ -14,29 +14,29 @@ const meta: Meta<typeof Grid> = {
   args: {
     children: [
       <Box
-        v="center"
-        h="center"
+        vertical="center"
+        horizontal="center"
         style={{ height: 200, backgroundColor: "red" }}
       >
         Area 1
       </Box>,
       <Box
-        v="center"
-        h="center"
+        vertical="center"
+        horizontal="center"
         style={{ height: 200, backgroundColor: "green" }}
       >
         Area 2
       </Box>,
       <Box
-        v="center"
-        h="center"
+        vertical="center"
+        horizontal="center"
         style={{ height: 200, backgroundColor: "blue" }}
       >
         Area 3
       </Box>,
       <Box
-        v="center"
-        h="center"
+        vertical="center"
+        horizontal="center"
         style={{ height: 200, backgroundColor: "orange" }}
       >
         Area 4
@@ -50,7 +50,7 @@ type Story = StoryObj<typeof Grid>;
 
 export const Default: Story = {
   args: {
-    h: "400px 200px",
+    horizontal: "400px 200px",
     gap: "10px",
     lineGap: "10px",
   },

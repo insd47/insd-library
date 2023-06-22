@@ -1,40 +1,8 @@
 import styled from "@emotion/styled";
-import {
-  CSSProperties,
-  PropsWithChildren,
-  forwardRef,
-  HTMLAttributes,
-  ElementType,
-} from "react";
+import { PropsWithChildren, forwardRef, ElementType } from "react";
 
-import { TextStyles, Weights, FindTemplate } from "./styles";
-
-type TextType = "title" | "paragraph" | "uin" | "uim";
-type TextTemplate = 1 | 2 | 3 | 4;
-type TextWeight = "thin" | "light" | "regular" | "medium" | "bold";
-
-interface CommonProps extends HTMLAttributes<HTMLDivElement> {
-  disabled?: boolean;
-  maxLines?: number;
-}
-
-interface StyledTextProps extends CommonProps {
-  CSSValues?: CSSProperties;
-}
-
-interface TextProps extends CommonProps {
-  type?: TextType;
-  inline?: boolean;
-  template?: TextTemplate;
-  size?: CSSProperties["fontSize"];
-  weight?: TextWeight;
-  line?: CSSProperties["lineHeight"];
-  flex?: CSSProperties["flex"];
-  self?: CSSProperties["alignSelf"];
-  margin?: CSSProperties["margin"];
-  padding?: CSSProperties["padding"];
-  inherit?: boolean;
-}
+import { TextStyles, Weights } from "./styles";
+import { TextProps, StyledTextProps } from "./types";
 
 const StyledText = styled.p<StyledTextProps>`
   ${({ maxLines }) =>
@@ -57,14 +25,13 @@ const Text = forwardRef<HTMLParagraphElement, PropsWithChildren<TextProps>>(
     {
       children,
       inline,
-      type = "uin",
+      type = "ui",
       template = 2,
       inherit = false,
       size,
       weight,
       line,
       flex,
-      self,
       margin,
       padding,
       disabled,
@@ -74,23 +41,21 @@ const Text = forwardRef<HTMLParagraphElement, PropsWithChildren<TextProps>>(
     },
     ref
   ) => {
+    const templateIndex = Math.min(template - 1, type === "paragraph" ? 1 : 2);
+
     const CSSValues = {
       flex,
-      alignSelf: self,
       margin: margin ? margin : 0,
       padding: padding ? padding : 0,
       ...(!inherit
         ? {
-            fontSize: size
-              ? size
-              : TextStyles[type][FindTemplate(type, template)].size,
+            fontSize: size ? size : TextStyles[type][templateIndex].size,
             lineHeight: line
               ? line.toString() + "px"
-              : TextStyles[type][FindTemplate(type, template)].line.toString() +
-                "px",
+              : TextStyles[type][templateIndex].line.toString() + "px",
             fontWeight: weight
               ? Weights[weight]
-              : TextStyles[type][FindTemplate(type, template)].weight,
+              : TextStyles[type][templateIndex].weight,
           }
         : {
             fontSize: size ? size : "inherit",
