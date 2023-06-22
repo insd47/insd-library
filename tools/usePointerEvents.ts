@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 interface PointerValues {
-  isClicked: boolean;
+  isPressed: boolean;
   isHover: boolean;
 }
 
 const usePointerEvents = () => {
-  const [isClicked, setIsClicked] = useState<boolean>(false);
+  const [isPressed, setIsPressed] = useState<boolean>(false);
   const [isHover, setIsHover] = useState<boolean>(false);
 
   const pointerEvents = {
@@ -15,18 +15,18 @@ const usePointerEvents = () => {
     },
     onPointerLeave: () => {
       setIsHover(false);
-      setIsClicked(false);
+      setIsPressed(false);
     },
     onPointerDown: () => {
-      setIsClicked(true);
+      setIsPressed(true);
     },
     onPointerUp: () => {
-      setIsClicked(false);
+      setIsPressed(false);
     },
   };
 
   const pointerValues: PointerValues = {
-    isClicked,
+    isPressed,
     isHover,
   };
 

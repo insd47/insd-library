@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { StyledButtonProps } from "./types";
+import { StyledButtonProps, ButtonType } from "./types";
 
 const StyledButton = styled.button<StyledButtonProps>`
   position: relative;
@@ -37,84 +37,59 @@ const StyledButton = styled.button<StyledButtonProps>`
     `}
   }
 
-  ${({ isHover, isClicked }) =>
-    isHover && isClicked && "transform: scale(0.98);"}
+  ${({ isHover, isPressed }) =>
+    isHover && isPressed && "transform: scale(0.98);"}
 
-  ${({ buttonType, theme, isHover, isClicked }) =>
-    buttonType === "filled"
-      ? `
-    border-color: transparent;
-    background-color: ${theme.colors.text.main};
-    color: ${theme.colors.background.main};
+  
+  ${({ buttonType, theme }) =>
+    ({
+      filled: `
+        border-color: transparent;
+        background-color: ${theme.colors.text.main};
+        color: ${theme.colors.background.main};
+      `,
 
-    ${
-      isHover
-        ? isClicked
-          ? `
-    background-color: ${theme.colors.text.solid(65)};
-    `
-          : `
-    background-color: ${theme.colors.text.solid(80)};
-    `
-        : ""
-    }
-    `
-      : buttonType === "linear"
-      ? `
-    border-color: ${theme.colors.text.main};
-    background-color: ${theme.colors.background.main};
-    color: ${theme.colors.text.main};
+      linear: `
+        border-color: ${theme.colors.text.main};
+        background-color: ${theme.colors.background.main};
+        color: ${theme.colors.text.main};
+      `,
 
-    ${
-      isHover
-        ? isClicked
-          ? `
-    background-color: ${theme.colors.text.solid(10)};
-    border-color: ${theme.colors.gray.solid(70)};
-    `
-          : `
-    border-color: ${theme.colors.gray.solid(70)};
-    `
-        : ""
-    }
-    `
-      : buttonType === "warn"
-      ? `
-    border-color: transparent;
-    color: ${theme.colors.white.main};
-    background-color: ${theme.colors.red.main};
+      warn: `
+        border-color: transparent;
+        color: ${theme.colors.white.main};
+        background-color: ${theme.colors.red.main};
+      `,
 
-    ${
-      isHover
-        ? isClicked
-          ? `
-    background-color: ${theme.colors.red.solid(65)};
-    `
-          : `
-    background-color: ${theme.colors.red.solid(80)};
-    `
-        : ""
-    }
-  `
-      : `
-  border: 0;
-  background-color: transparent;
-  color: ${theme.colors.text.main};
+      transparent: `
+        border-color: transparent;
+        color: ${theme.colors.text.main};
+        background-color: transparent;
+      `,
+    }[buttonType as ButtonType])}
 
-  ${
-    isHover
-      ? isClicked
-        ? `
-  background-color: ${theme.colors.gray.solid(35)};
-  `
-        : `
-  background-color: ${theme.colors.gray.solid(20)};
-  `
-      : ""
-  }
-      `}
 
-  ${({ CSSValues }) => ({ ...CSSValues })}
+  ${({ buttonType, theme, isHover, isPressed }) =>
+    isHover &&
+    {
+      hover: {
+        filled: `background-color: ${theme.colors.text.solid(80)};`,
+        linear: `border-color: ${theme.colors.gray.solid(70)};`,
+        warn: `background-color: ${theme.colors.red.solid(80)};`,
+        transparent: `background-color: ${theme.colors.text.solid(20)};`,
+      },
+
+      pressed: {
+        filled: `background-color: ${theme.colors.text.solid(65)};`,
+        linear: `
+          background-color: ${theme.colors.text.solid(10)};
+          border-color: ${theme.colors.gray.solid(70)};`,
+        warn: `background-color: ${theme.colors.red.solid(65)};`,
+        transparent: `background-color: ${theme.colors.text.solid(35)};`,
+      },
+    }[isPressed ? "pressed" : "hover"][buttonType as ButtonType]}
+
+  ${({ CSSValues }) => ({ ...CSSValues })})}
 `;
 
 export default StyledButton;

@@ -2,7 +2,7 @@ import { CSSProperties, HTMLAttributes } from "react";
 
 import { IconType } from "../../generic/Icon/types";
 
-type ButtonType = "filled" | "linear" | "warn" | "transparent";
+export type ButtonType = "filled" | "linear" | "warn" | "transparent";
 type ButtonSize = "big" | "medium" | "small" | "tiny";
 type originalButtonType = "button" | "submit" | "reset";
 
@@ -28,5 +28,5 @@ export interface StyledButtonProps extends CommonProps {
   CSSValues?: CSSProperties;
   isLoading?: boolean;
   isHover?: boolean;
-  isClicked?: boolean;
+  isPressed?: boolean;
 }
