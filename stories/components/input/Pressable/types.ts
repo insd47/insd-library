@@ -6,7 +6,6 @@ interface CommonProps extends HTMLAttributes<HTMLButtonElement> {}
 
 export interface PressableProps extends CommonProps {
   flex?: CSSProperties["flex"];
-  self?: CSSProperties["alignSelf"];
   margin?: CSSProperties["margin"];
   bottom?: CSSProperties["marginBottom"];
   link?: ReactElement;
@@ -20,7 +19,7 @@ export interface StyledPressableProps extends CommonProps {
   type?: originalButtonType;
   hasLink?: boolean;
   CSSValues?: CSSProperties;
-  isClicked?: boolean;
+  isPressed?: boolean;
   isHover?: boolean;
   isTouched?: boolean;
   uniform?: boolean;

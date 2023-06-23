@@ -13,7 +13,6 @@ const Pressable = forwardRef<
     {
       children,
       flex,
-      self,
       link,
       type = "text",
       formType = "button",
@@ -27,7 +26,6 @@ const Pressable = forwardRef<
   ) => {
     const CSSValues = {
       flex,
-      alignSelf: self,
       margin,
       marginBottom: bottom,
     };

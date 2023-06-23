@@ -30,39 +30,35 @@ const StyledPressable = styled.button<StyledPressableProps>`
     z-index: -1;
   }
 
-  ${({ isHover, isClicked }) =>
-    isHover && isClicked && "transform: scale(0.98);"}
+  ${({ isHover, isPressed }) =>
+    isHover && isPressed && "transform: scale(0.98);"}
 
-  ${({ theme, hasLink, isHover, isClicked }) =>
-    hasLink
-      ? isHover
-        ? isClicked
-          ? `
-      text-decoration: underline;
-      &:after {
-        background-color: ${theme.colors.blue.alpha(35)};
-      }
-        `
-          : `
-        text-decoration: underline;
-        &:after {
-          background-color: ${theme.colors.blue.alpha(20)};
-        }
-        `
-        : ""
-      : isHover
-      ? isClicked
-        ? `
-        &:after {
-          background-color: ${theme.colors.gray.alpha(35)};
-        }
-        `
-        : `
-        &:after {
-          background-color: ${theme.colors.gray.alpha(20)};
-        }
-        `
-      : ""}
+  ${({ theme, hasLink, isHover, isPressed }) =>
+    isHover &&
+    {
+      link: {
+        hover: `
+          text-decoration: underline;
+          &:after {
+            background-color: ${theme.colors.blue.alpha(20)};
+          }`,
+        pressed: `
+          text-decoration: underline;
+          &:after {
+            background-color: ${theme.colors.blue.alpha(35)};
+          }`,
+      },
+      text: {
+        hover: `
+          &:after {
+            background-color: ${theme.colors.gray.alpha(20)} !important;
+          }`,
+        pressed: `
+          &:after {
+            background-color: ${theme.colors.gray.alpha(35)};
+          }`,
+      },
+    }[hasLink ? "link" : "text"][isPressed ? "pressed" : "hover"]}
 
   &[disabled] {
     ${({ theme }) => `
