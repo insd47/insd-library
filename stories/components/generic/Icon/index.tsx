@@ -1,36 +1,17 @@
-import styled from "@emotion/styled";
 import { PropsWithChildren, forwardRef } from "react";
 
-import { StyledIconProps, IconProps } from "./types";
+import { StyledIcon, StyledIconButton } from "./styles";
 
-const StyledIcon = styled.i<StyledIconProps>`
-  font-family: var(--font-icon);
-  speak: never;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-
-  letter-spacing: 0;
-  -webkit-font-feature-settings: "liga";
-  -moz-font-feature-settings: "liga=1";
-  -moz-font-feature-settings: "liga";
-  -ms-font-feature-settings: "liga" 1;
-  font-feature-settings: "liga";
-  -webkit-font-variant-ligatures: discretionary-ligatures;
-  font-variant-ligatures: discretionary-ligatures;
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  ${({ CSSValues }) => ({ ...CSSValues })}
-`;
+import { IconProps } from "./types";
+import { usePointerEvents } from "../../../../tools";
 
 const Icon = forwardRef<HTMLSpanElement, PropsWithChildren<IconProps>>(
   (
     {
       children,
       type = "link",
+      pressable,
+      action,
       size = 24,
       margin,
       padding,
@@ -47,7 +28,19 @@ const Icon = forwardRef<HTMLSpanElement, PropsWithChildren<IconProps>>(
       marginRight: right,
     };
 
-    return (
+    const { pointerEvents, pointerValues } = usePointerEvents();
+
+    return pressable ? (
+      <StyledIconButton
+        {...pointerEvents}
+        {...pointerValues}
+        onClick={action ? () => action() : undefined}
+      >
+        <StyledIcon ref={ref} CSSValues={CSSValues} {...props}>
+          {type}
+        </StyledIcon>
+      </StyledIconButton>
+    ) : (
       <StyledIcon ref={ref} CSSValues={CSSValues} {...props}>
         {type}
       </StyledIcon>

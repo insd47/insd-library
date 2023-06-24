@@ -91,15 +91,23 @@ export type IconType =
 
 interface CommonProps extends HTMLAttributes<HTMLDivElement> {}
 
-export interface IconProps extends HTMLAttributes<HTMLDivElement> {
+export interface IconProps extends CommonProps {
   type?: IconType;
   size?: CSSProperties["fontSize"];
   margin?: CSSProperties["margin"];
   padding?: CSSProperties["padding"];
   right?: CSSProperties["marginRight"];
   disabled?: boolean;
+  pressable?: boolean;
+  action?: () => void;
 }
 
 export interface StyledIconProps extends CommonProps {
   CSSValues?: CSSProperties;
+}
+
+export interface StyledIconButtonProps {
+  pressable?: boolean;
+  isHover?: boolean;
+  isPressed?: boolean;
 }
