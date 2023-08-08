@@ -12,7 +12,6 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(
       loading,
       children,
       icon,
-      flex,
       stretch,
       type = "linear",
       size = "medium",
@@ -26,7 +25,6 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(
     ref
   ) => {
     const CSSValues = {
-      flex,
       margin,
       width: stretch ? "100%" : undefined,
       padding:

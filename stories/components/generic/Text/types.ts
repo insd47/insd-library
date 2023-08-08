@@ -20,7 +20,6 @@ export interface TextProps extends CommonProps {
   size?: CSSProperties["fontSize"];
   weight?: TextWeight;
   line?: CSSProperties["lineHeight"];
-  flex?: CSSProperties["flex"];
   margin?: CSSProperties["margin"];
   padding?: CSSProperties["padding"];
   inherit?: boolean;
