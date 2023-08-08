@@ -7,7 +7,6 @@ interface CommonProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 export interface LoadingProps extends CommonProps {
-  flex?: CSSProperties["flex"];
   margin?: CSSProperties["margin"];
   padding?: CSSProperties["padding"];
   style?: CSSProperties;

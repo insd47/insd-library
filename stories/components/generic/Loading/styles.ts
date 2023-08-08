@@ -6,13 +6,13 @@ const StyledLoading = styled.span<StyledLoadingProps>`
 
   ${({ theme }) => `@keyframes LoadingAnimation {
     0% {
-      background-color: ${theme.colors.gray.alpha(30)};
+      background-color: ${theme.colors.text.passive[3]};
     }
     50% {
-      background-color: ${theme.colors.gray.main};
+      background-color: ${theme.colors.text.passive[1]};
     }
     100% {
-      background-color: ${theme.colors.gray.alpha(30)};
+      background-color: ${theme.colors.text.passive[3]};
     }
   }`}
 
@@ -24,7 +24,7 @@ const StyledLoading = styled.span<StyledLoadingProps>`
     border-radius: 50%;
     animation-delay: 200ms;
     ${({ theme }) => `
-      background-color: ${theme.colors.gray.alpha(30)};
+      background-color: ${theme.colors.text.passive[3]};
       animation: LoadingAnimation 1.4s ease-in-out infinite;
     `};
   }

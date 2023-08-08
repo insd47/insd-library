@@ -1,4 +1,5 @@
 import { CSSProperties } from "react";
+import type { InsdColor } from "./colors";
 
 export type CSSColor = CSSProperties["color"];
 export type ColorWithOpacity = (opacity: number) => CSSColor;
@@ -6,27 +7,55 @@ export type ColorWithOpacity = (opacity: number) => CSSColor;
 export type ThemeMode = "light" | "dark";
 export type UserThemeMode = ThemeMode | "auto";
 
-export interface ColorObject {
-  main: CSSColor;
-  alpha: ColorWithOpacity;
-  solid: ColorWithOpacity;
+// absolute object
+export interface absolute {
+  gray: InsdColor;
+  red: InsdColor;
+  green: InsdColor;
+  blue: InsdColor;
+  yellow: InsdColor;
 }
 
 // colors object
 export interface colors {
-  text: ColorObject;
-  background: ColorObject;
-  white: ColorObject;
-  black: ColorObject;
-  gray: ColorObject;
-  red: ColorObject;
-  green: ColorObject;
-  blue: ColorObject;
-  yellow: ColorObject;
+  text: {
+    main: InsdColor;
+    passive: {
+      1: InsdColor;
+      2: InsdColor;
+      3: InsdColor;
+    };
+  };
+  box: {
+    background: InsdColor;
+    overlay: InsdColor;
+    foreground: {
+      1: InsdColor;
+      2: InsdColor;
+      3: InsdColor;
+    };
+    filled: {
+      1: InsdColor;
+      2: InsdColor;
+      3: InsdColor;
+    };
+    border: {
+      1: InsdColor;
+      2: InsdColor;
+      3: InsdColor;
+    };
+  };
+  secondary: {
+    red: InsdColor;
+    green: InsdColor;
+    blue: InsdColor;
+    yellow: InsdColor;
+  };
 }
 
 export interface Theme {
   colors: colors;
+  absolute: absolute;
   change: (mode: UserThemeMode) => void;
   mode: ThemeMode;
 }

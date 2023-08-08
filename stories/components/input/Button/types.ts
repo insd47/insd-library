@@ -12,7 +12,6 @@ export interface ButtonProps extends CommonProps {
   disabled?: boolean;
   margin?: CSSProperties["margin"];
   bottom?: CSSProperties["marginBottom"];
-  flex?: CSSProperties["flex"];
   stretch?: boolean;
   size?: ButtonSize;
   icon?: IconType;

@@ -13,14 +13,14 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
   &:after {
     content: "";
     position: absolute;
-    width: calc(100% + 6px);
-    height: calc(100% + 6px);
-    left: -3px;
-    top: -3px;
+    width: 150%;
+    height: 150%;
+    left: -25%;
+    top: -25%;
     background-color: transparent;
     pointer-events: none;
     transition: background-color 0.1s;
-    border-radius: 6px;
+    border-radius: 50%;
     z-index: -1;
   }
 
@@ -29,11 +29,11 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
     {
       hover: `
         &:after {
-          background-color: ${theme.colors.gray.alpha(20)} !important;
+          background-color: ${theme.colors.box.foreground[3]} !important;
         }`,
       pressed: `
         &:after {
-          background-color: ${theme.colors.gray.alpha(35)};
+          background-color: ${theme.colors.box.foreground[1]};
         }`,
     }[isPressed ? "pressed" : "hover"]}
 `;

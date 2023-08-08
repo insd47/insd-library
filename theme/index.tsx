@@ -8,7 +8,7 @@ import {
   useCallback,
 } from "react";
 
-import colors from "./colors";
+import { colors, absolute } from "./colors";
 import global from "./global";
 
 import { Theme, ThemeMode, UserThemeMode } from "./types";
@@ -95,6 +95,7 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
     () => ({
       mode: mode,
       colors: colors[mode],
+      absolute: absolute[mode],
       change,
     }),
     [mode]

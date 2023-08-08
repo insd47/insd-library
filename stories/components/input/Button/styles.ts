@@ -7,8 +7,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   border-radius: 8px;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: background-color 0.1s, border-color 0.1s, color 0.1s,
-    transform 0.1s;
+  transition: opacity 0.1s, transform 0.1s;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -19,9 +18,9 @@ const StyledButton = styled.button<StyledButtonProps>`
   &[disabled] {
     cursor: not-allowed;
     ${({ theme }) => `
-    border: 1px dashed ${theme.colors.gray.solid(50)};
-    color: ${theme.colors.gray.solid(70)};
-    background-color: ${theme.colors.background.main};
+    border: 1px dashed ${theme.colors.box.border[2]};
+    color: ${theme.colors.text.passive[1]};
+    background-color: ${theme.colors.box.foreground[3]};
     pointer-events: none;
     `}
   }
@@ -38,27 +37,30 @@ const StyledButton = styled.button<StyledButtonProps>`
   }
 
   ${({ isHover, isPressed }) =>
-    isHover && isPressed && "transform: scale(0.98);"}
-
+    isHover
+      ? isPressed
+        ? "transform: scale(0.98); opacity: 0.6;"
+        : "opacity: 0.8;"
+      : ""}
   
   ${({ buttonType, theme }) =>
     ({
       filled: `
         border-color: transparent;
         background-color: ${theme.colors.text.main};
-        color: ${theme.colors.background.main};
+        color: ${theme.colors.box.background};
       `,
 
       linear: `
-        border-color: ${theme.colors.text.main};
-        background-color: ${theme.colors.background.main};
+        border-color: ${theme.colors.box.border[1]};
+        background-color: ${theme.colors.box.foreground[3]};
         color: ${theme.colors.text.main};
       `,
 
       warn: `
         border-color: transparent;
-        color: ${theme.colors.white.main};
-        background-color: ${theme.colors.red.main};
+        color: white;
+        background-color: ${theme.colors.secondary.red};
       `,
 
       transparent: `
@@ -67,27 +69,6 @@ const StyledButton = styled.button<StyledButtonProps>`
         background-color: transparent;
       `,
     }[buttonType as ButtonType])}
-
-
-  ${({ buttonType, theme, isHover, isPressed }) =>
-    isHover &&
-    {
-      hover: {
-        filled: `background-color: ${theme.colors.text.solid(80)};`,
-        linear: `border-color: ${theme.colors.gray.solid(70)};`,
-        warn: `background-color: ${theme.colors.red.solid(80)};`,
-        transparent: `background-color: ${theme.colors.text.solid(20)};`,
-      },
-
-      pressed: {
-        filled: `background-color: ${theme.colors.text.solid(65)};`,
-        linear: `
-          background-color: ${theme.colors.text.solid(10)};
-          border-color: ${theme.colors.gray.solid(70)};`,
-        warn: `background-color: ${theme.colors.red.solid(65)};`,
-        transparent: `background-color: ${theme.colors.text.solid(35)};`,
-      },
-    }[isPressed ? "pressed" : "hover"][buttonType as ButtonType]}
 
   ${({ CSSValues }) => ({ ...CSSValues })})}
 `;

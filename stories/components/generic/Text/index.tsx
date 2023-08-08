@@ -15,7 +15,7 @@ const StyledText = styled.p<StyledTextProps>`
   `}
 
   ${({ disabled, CSSValues, theme }) => ({
-    color: disabled ? theme.colors.gray.main : undefined,
+    color: disabled ? theme.colors.text.main + "" : undefined,
     ...CSSValues,
   })}
 `;
@@ -31,7 +31,6 @@ const Text = forwardRef<HTMLParagraphElement, PropsWithChildren<TextProps>>(
       size,
       weight,
       line,
-      flex,
       margin,
       padding,
       disabled,
@@ -44,7 +43,6 @@ const Text = forwardRef<HTMLParagraphElement, PropsWithChildren<TextProps>>(
     const templateIndex = Math.min(template - 1, type === "paragraph" ? 1 : 2);
 
     const CSSValues = {
-      flex,
       margin: margin ? margin : 0,
       padding: padding ? padding : 0,
       ...(!inherit

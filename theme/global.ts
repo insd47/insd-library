@@ -3,7 +3,7 @@ import { Theme, css } from "@emotion/react";
 const global = (theme: Theme) => css`
   :root {
     font-size: 14px;
-    color: ${theme.colors.text.main};
+    color: ${theme.colors.text.main + ""};
     -webkit-tap-highlight-color: transparent;
     user-select: none;
     touch-action: manipulation;
@@ -34,7 +34,7 @@ const global = (theme: Theme) => css`
     box-sizing: border-box;
 
     &:focus-visible {
-      outline: 1px dashed ${theme.colors.text.main};
+      outline: 1px dashed ${theme.colors.text.main + ""};
       outline-offset: 4px;
     }
   }
@@ -59,7 +59,7 @@ const global = (theme: Theme) => css`
   }
 
   html {
-    background-color: ${theme.colors.background.main};
+    background-color: ${theme.colors.box.background + ""};
     -ms-touch-action: manipulation;
     touch-action: manipulation;
   }

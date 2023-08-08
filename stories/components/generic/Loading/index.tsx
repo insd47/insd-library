@@ -4,9 +4,8 @@ import StyledLoading from "./styles";
 import { LoadingProps } from "./types";
 
 const Loading = forwardRef<HTMLSpanElement, LoadingProps>(
-  ({ size = "medium", flex, margin, padding, style, ...props }, ref) => {
+  ({ size = "medium", margin, padding, style, ...props }, ref) => {
     const CSSValues = {
-      flex,
       margin,
       padding,
     };
