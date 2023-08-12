@@ -27,17 +27,14 @@ yarn storybook
 
 ## 제작 완료 컴포넌트
 
-- Block
 - Button
-- Box
 - Disabler
-- Grid
 - Icon
 - Loading
 - Text
 - Switch
 - Pressable
-- Scrollable
+- Textfield
 
 ## 제작 중인 컴포넌트
 
@@ -46,4 +43,3 @@ yarn storybook
 - Dropdown
 - Number
 - Slider
-- Textfield

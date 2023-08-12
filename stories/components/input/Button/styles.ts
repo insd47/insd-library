@@ -28,7 +28,6 @@ const StyledButton = styled.button<StyledButtonProps>`
   & > * {
     opacity: 1;
     transition: opacity 0.1s;
-    will-change: var(--willchangedefault), opacity;
     ${({ isLoading }) =>
       isLoading &&
       `

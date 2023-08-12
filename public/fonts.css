@@ -1,70 +1,14 @@
 @font-face {
-  font-family: "Outfit";
-  src: url('../fonts/Outfit_500.woff2') format("woff2");
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: "Outfit";
-  src: url('../fonts/Outfit_400.woff2') format("woff2");
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "Outfit";
-  src: url('../fonts/Outfit_300.woff2') format("woff2");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Outfit";
-  src: url('../fonts/Outfit_200.woff2') format("woff2");
-  font-weight: 300;
-}
-
-@font-face {
-  font-family: "Outfit";
-  src: url('../fonts/Outfit_100.woff2') format("woff2");
-  font-weight: 100;
-}
-
-@font-face {
-  font-family: "Spoqa Han Sans Neo";
-  src: url('../fonts/SpoqaHanSansNeo-Bold.woff2') format("woff2");
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: "Spoqa Han Sans Neo";
-  src: url('../fonts/SpoqaHanSansNeo-Medium.woff2') format("woff2");
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "Spoqa Han Sans Neo";
-  src: url('../fonts/SpoqaHanSansNeo-Regular.woff2') format("woff2");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Spoqa Han Sans Neo";
-  src: url('../fonts/SpoqaHanSansNeo-Light.woff2') format("woff2");
-  font-weight: 300;
-}
-
-@font-face {
-  font-family: "Spoqa Han Sans Neo";
-  src: url('../fonts/SpoqaHanSansNeo-Thin.woff2') format("woff2");
-  font-weight: 100;
+  font-family: Pretendard;
+  src: url('../fonts/PretendardVariable.woff2') format("woff2");
 }
 
 @font-face {
   font-family: insdIcons;
-  src: url('../fonts/insd-icons.woff') format("woff");
+  src: url('../fonts/insd-icons.ttf') format("ttf");
 }
 
 :root {
-  --font-spoqa: "Spoqa Han Sans Neo";
-  --font-outfit: Outfit;
+  --font-main: Pretendard;
   --font-icon: insdIcons
 }

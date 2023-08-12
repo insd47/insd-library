@@ -4,7 +4,7 @@ export default create({
   base: "dark",
 
   // Typography
-  fontBase: `var(--font-outfit), var(--font-spoqa), Helvetica, Arial, sans-serif`,
+  fontBase: `var(--font-main), sans-serif`,
   fontCode: "monospace",
 
   brandTitle: "insd",

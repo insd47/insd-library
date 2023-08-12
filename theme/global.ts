@@ -16,7 +16,7 @@ const global = (theme: Theme) => css`
   }
 
   body {
-    font-family: var(--font-outfit), var(--font-spoqa), sans-serif;
+    font-family: var(--font-main), sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
