@@ -1,8 +1,8 @@
 import { CSSProperties, HTMLAttributes } from "react";
 
-type TextType = "title" | "paragraph" | "ui";
-type TextTemplate = 1 | 2 | 3;
-type TextWeight = "thin" | "light" | "regular" | "medium" | "bold";
+export type TextType = "title" | "paragraph" | "ui";
+export type TextTemplate = 1 | 2 | 3;
+export type TextWeight = "thin" | "light" | "regular" | "medium" | "bold";
 
 interface CommonProps extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;

@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { PropsWithChildren, forwardRef, ElementType } from "react";
 
 import { TextStyles, Weights } from "./styles";
-import { TextProps, StyledTextProps } from "./types";
+import type { TextProps, StyledTextProps } from "./types";
 
 const StyledText = styled.p<StyledTextProps>`
   ${({ maxLines }) =>

@@ -11,7 +11,15 @@ import {
 import { colors, absolute } from "./colors";
 import global from "./global";
 
-import { Theme, ThemeMode, UserThemeMode } from "./types";
+import type { Theme, ThemeMode, UserThemeMode } from "./types";
+
+export type {
+  CSSColor,
+  ColorWithOpacity,
+  ThemeMode,
+  UserThemeMode,
+  Theme,
+} from "./types";
 
 const THEME_MODE = "theme-mode";
 

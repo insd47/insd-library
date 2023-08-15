@@ -1,8 +1,8 @@
 import { PropsWithChildren, forwardRef } from "react";
 
 import { StyledIcon, StyledIconButton } from "./styles";
+import type { IconProps } from "./types";
 
-import { IconProps } from "./types";
 import { usePointerEvents } from "../../../../tools";
 
 const Icon = forwardRef<HTMLSpanElement, PropsWithChildren<IconProps>>(

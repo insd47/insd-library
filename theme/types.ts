@@ -8,7 +8,7 @@ export type ThemeMode = "light" | "dark";
 export type UserThemeMode = ThemeMode | "auto";
 
 // absolute object
-export interface absolute {
+interface absolute {
   gray: InsdColor;
   red: InsdColor;
   green: InsdColor;
@@ -17,7 +17,7 @@ export interface absolute {
 }
 
 // colors object
-export interface colors {
+interface colors {
   text: {
     main: InsdColor;
     passive: {

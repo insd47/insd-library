@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 
 import StyledLoading from "./styles";
-import { LoadingProps } from "./types";
+import type { LoadingProps } from "./types";
 
 const Loading = forwardRef<HTMLSpanElement, LoadingProps>(
   ({ size = "medium", margin, padding, style, ...props }, ref) => {

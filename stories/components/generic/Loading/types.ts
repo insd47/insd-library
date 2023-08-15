@@ -1,6 +1,6 @@
 import { CSSProperties, HTMLAttributes } from "react";
 
-type LoadingSize = "big" | "medium" | "small";
+export type LoadingSize = "big" | "medium" | "small";
 
 interface CommonProps extends HTMLAttributes<HTMLSpanElement> {
   size?: LoadingSize;

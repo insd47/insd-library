@@ -1,10 +1,10 @@
 import { PropsWithChildren, forwardRef, useState, useEffect } from "react";
 
 import StyledButton from "./styles";
+import type { ButtonProps } from "./types";
 
 import { Icon, Loading } from "../../generic";
 import { usePointerEvents } from "../../../../tools";
-import { ButtonProps } from "./types";
 
 const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(
   (

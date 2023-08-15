@@ -3,7 +3,7 @@ import { CSSProperties, HTMLAttributes } from "react";
 import { IconType } from "../../generic/Icon/types";
 
 export type ButtonType = "filled" | "linear" | "warn" | "transparent";
-type ButtonSize = "big" | "medium" | "small" | "tiny";
+export type ButtonSize = "big" | "medium" | "small" | "tiny";
 type originalButtonType = "button" | "submit" | "reset";
 
 interface CommonProps extends HTMLAttributes<HTMLButtonElement> {}
