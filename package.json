@@ -1,6 +1,6 @@
 {
   "name": "@insd47/insd-library",
-  "version": "0.1.0-alpha",
+  "version": "0.1.1-alpha",
   "license": "MIT",
   "type": "module",
   "exports": {
