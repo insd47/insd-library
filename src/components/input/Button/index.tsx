@@ -1,6 +1,11 @@
 "use client";
 
-import { PropsWithChildren, forwardRef, useState, useEffect } from "react";
+import React, {
+  PropsWithChildren,
+  forwardRef,
+  useState,
+  useEffect,
+} from "react";
 
 import StyledButton from "./styles";
 import type { ButtonProps } from "./types";
