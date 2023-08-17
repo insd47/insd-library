@@ -3,6 +3,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import typescript from "@rollup/plugin-typescript";
+import preserveDirectives from "rollup-plugin-preserve-directives";
 
 const extensions = [".js", ".jsx", ".ts", ".tsx", ".mjs"];
 
@@ -46,6 +47,9 @@ const config = sources.map((source) => ({
       ],
       extensions,
       include: ["src/**/*"],
+    }),
+    preserveDirectives({
+      include: ["use strict", "global", "use client"],
     }),
   ],
 }));
