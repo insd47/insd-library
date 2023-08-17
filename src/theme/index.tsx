@@ -1,5 +1,7 @@
+"use client";
+
 import { Global, ThemeProvider as EmotionProvider } from "@emotion/react";
-import {
+import React, {
   PropsWithChildren,
   useEffect,
   useLayoutEffect,
