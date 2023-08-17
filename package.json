@@ -1,20 +1,20 @@
 {
   "name": "@insd47/insd-library",
-  "version": "0.1.2-alpha",
+  "version": "0.1.5-alpha",
   "license": "MIT",
   "type": "module",
   "exports": {
     "./theme": {
-      "import": "./dist/theme.js",
-      "types": "./dist/types/theme/index.d.ts"
+      "import": "./dist/theme/index.js",
+      "types": "./dist/theme/index.d.ts"
     },
     "./generic": {
-      "import": "./dist/generic.js",
-      "types": "./dist/types/sources/components/generic/index.d.ts"
+      "import": "./dist/components/generic/index.js",
+      "types": "./dist/components/generic/index.d.ts"
     },
     "./input": {
-      "import": "./dist/input.js",
-      "types": "./dist/types/sources/components/input/index.d.ts"
+      "import": "./dist/components/input/index.js",
+      "types": "./dist/components/input/index.d.ts"
     }
   },
   "scripts": {
