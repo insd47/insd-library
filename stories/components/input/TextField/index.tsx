@@ -1,4 +1,4 @@
-import { PropsWithChildren, forwardRef } from "react";
+import { forwardRef } from "react";
 
 import {
   StyledTextfield,
