@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Sheet from "./";
+import Sheet from ".";
 import { Button } from "../../input";
 import { CSSProperties } from "react";
 

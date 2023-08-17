@@ -4,7 +4,7 @@ import StyledButton from "./styles";
 import type { ButtonProps } from "./types";
 
 import { Icon, Loading } from "../../generic";
-import { usePointerEvents } from "../../../../tools";
+import { usePointerEvents } from "../../../tools";
 
 const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(
   (

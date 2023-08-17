@@ -7,7 +7,7 @@ import {
 } from "./styles";
 
 import { TextfieldProps } from "./types";
-import { usePointerEvents } from "../../../../tools";
+import { usePointerEvents } from "../../../tools";
 import { Icon } from "../../generic";
 
 const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(

@@ -8,15 +8,15 @@ const extensions = [".js", ".jsx", ".ts", ".tsx", ".mjs"];
 
 const sources = [
   {
-    dir: "stories/components/generic/index.ts",
+    dir: "src/components/generic/index.ts",
     name: "generic",
   },
   {
-    dir: "stories/components/input/index.ts",
+    dir: "src/components/input/index.ts",
     name: "input",
   },
   {
-    dir: "theme/index.tsx",
+    dir: "src/theme/index.tsx",
     name: "theme",
   },
 ];
@@ -28,7 +28,8 @@ const config = sources.map((source) => ({
     {
       dir: "./dist",
       format: "esm",
-      entryFileNames: source.name + ".js",
+      preserveModules: true,
+      preserveModulesRoot: "src",
     },
   ],
   plugins: [
@@ -38,7 +39,7 @@ const config = sources.map((source) => ({
     typescript({
       tsconfig: "./tsconfig.json",
       declaration: true,
-      declarationDir: "./dist/types",
+      declarationDir: "./dist",
       declarationMap: true,
       emitDeclarationOnly: true,
       outDir: "./dist",
@@ -52,7 +53,7 @@ const config = sources.map((source) => ({
         "@babel/preset-typescript",
       ],
       extensions,
-      include: ["stories/**/*", "theme/**/*"],
+      include: ["src/**/*"],
     }),
   ],
 }));

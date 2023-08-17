@@ -10,11 +10,11 @@
     },
     "./generic": {
       "import": "./dist/generic.js",
-      "types": "./dist/types/stories/components/generic/index.d.ts"
+      "types": "./dist/types/sources/components/generic/index.d.ts"
     },
     "./input": {
       "import": "./dist/input.js",
-      "types": "./dist/types/stories/components/input/index.d.ts"
+      "types": "./dist/types/sources/components/input/index.d.ts"
     }
   },
   "scripts": {

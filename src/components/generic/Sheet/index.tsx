@@ -1,6 +1,6 @@
 import { createPortal } from "react-dom";
 
-const Sheet = () => {
+const Sheet: React.FC = () => {
   return createPortal(
     <div id="sheet">
       <h1>안녕</h1>

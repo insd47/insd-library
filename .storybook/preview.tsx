@@ -1,6 +1,6 @@
 import React from "react";
 import type { Preview } from "@storybook/react";
-import ThemeProvider from "../theme";
+import ThemeProvider from "../src/theme";
 import theme from "./theme";
 
 import { icon, main } from "./fonts";
