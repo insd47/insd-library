@@ -1,6 +1,6 @@
 {
   "name": "@insd47/insd-library",
-  "version": "0.1.5-alpha",
+  "version": "0.1.7-alpha",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -15,6 +15,10 @@
     "./input": {
       "import": "./dist/components/input/index.js",
       "types": "./dist/components/input/index.d.ts"
+    },
+    "./fonts": {
+      "import": "./dist/fonts/index.js",
+      "types": "./dist/fonts/index.d.ts"
     }
   },
   "scripts": {

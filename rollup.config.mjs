@@ -7,23 +7,15 @@ import typescript from "@rollup/plugin-typescript";
 const extensions = [".js", ".jsx", ".ts", ".tsx", ".mjs"];
 
 const sources = [
-  {
-    dir: "src/components/generic/index.ts",
-    name: "generic",
-  },
-  {
-    dir: "src/components/input/index.ts",
-    name: "input",
-  },
-  {
-    dir: "src/theme/index.tsx",
-    name: "theme",
-  },
+  "src/components/generic/index.ts",
+  "src/components/input/index.ts",
+  "src/theme/index.tsx",
+  "src/fonts.ts",
 ];
 
 const config = sources.map((source) => ({
   external: [/node_modules/],
-  input: source.dir,
+  input: source,
   output: [
     {
       dir: "./dist",
