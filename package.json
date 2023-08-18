@@ -1,6 +1,6 @@
 {
   "name": "@insd47/library",
-  "version": "0.1.16-alpha",
+  "version": "0.1.19-alpha",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -15,6 +15,10 @@
     "./input": {
       "import": "./dist/components/input/index.js",
       "types": "./dist/components/input/index.d.ts"
+    },
+    "./fonts": {
+      "import": "./dist/fonts.js",
+      "types": "./dist/fonts.d.ts"
     }
   },
   "scripts": {
@@ -22,7 +26,9 @@
     "build-storybook": "storybook build",
     "build": "rollup -c"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@next/font": "^13.3.0"
+  },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -35,7 +41,6 @@
     "@babel/preset-typescript": "^7.22.5",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@next/font": "^13.3.0",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^25.0.4",
     "@rollup/plugin-node-resolve": "^15.1.0",

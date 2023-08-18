@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
 
 import StyledLoading from "./styles";
 import type { LoadingProps } from "./types";

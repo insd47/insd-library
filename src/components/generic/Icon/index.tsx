@@ -1,6 +1,6 @@
 "use client";
 
-import { PropsWithChildren, forwardRef } from "react";
+import React, { PropsWithChildren, forwardRef } from "react";
 
 import { StyledIcon, StyledIconButton } from "./styles";
 import type { IconProps } from "./types";

@@ -2,8 +2,8 @@
 .rollup.cache
 .storybook
 node_modules
-public
 src
+.public/fonts.css
 .babelrc
 .env.local
 .eslintrc.json
