@@ -1,6 +1,6 @@
 {
   "name": "@insd47/library",
-  "version": "0.1.14-alpha",
+  "version": "0.1.15-alpha",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -15,10 +15,6 @@
     "./input": {
       "import": "./dist/components/input/index.js",
       "types": "./dist/components/input/index.d.ts"
-    },
-    "./fonts": {
-      "import": "./dist/fonts.js",
-      "types": "./dist/fonts.d.ts"
     }
   },
   "scripts": {
@@ -26,6 +22,7 @@
     "build-storybook": "storybook build",
     "build": "rollup -c"
   },
+  "dependencies": {},
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

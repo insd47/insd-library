@@ -2,6 +2,7 @@
 .rollup.cache
 .storybook
 node_modules
+public
 src
 .babelrc
 .env.local

@@ -3,7 +3,6 @@
 import { Global, ThemeProvider as EmotionProvider } from "@emotion/react";
 import React, {
   PropsWithChildren,
-  useEffect,
   useLayoutEffect,
   useState,
   useMemo,
@@ -27,7 +26,7 @@ const THEME_MODE = "theme-mode";
 
 const ThemeProvider = ({ children }: PropsWithChildren) => {
   const [userMode, setUserMode] = useState<UserThemeMode>("auto");
-  const [mode, setMode] = useState<ThemeMode>("light");
+  const [mode, setMode] = useState<ThemeMode>("dark");
 
   useLayoutEffect(() => {
     const body = document.querySelector("body");
@@ -58,7 +57,7 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
     else setMode("dark");
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const MediaQuery = window?.matchMedia("(prefers-color-scheme: light)");
 
     if (userMode === "auto") {
@@ -70,7 +69,7 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
     };
   }, [userMode]);
 
-  const getNewMode = useCallback((userMode: UserThemeMode) => {
+  const getNewMode = (userMode: UserThemeMode) => {
     let newMode: ThemeMode = "dark";
 
     if (userMode === "auto") {
@@ -81,7 +80,7 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
     }
 
     return newMode;
-  }, []);
+  };
 
   const change = useCallback(
     (userMode: UserThemeMode) => {

@@ -31,7 +31,6 @@ yarn storybook
 - Disabler
 - Icon
 - Loading
-- Text
 - Switch
 - Pressable
 - Textfield

@@ -9,6 +9,7 @@ export const StyledTextfieldContainer = styled.div<StyledTextfieldContainerProps
   display: flex;
   flex-direction: column;
   row-gap: 6px;
+  font-family: var(--font-main), sans-serif;
 
   ${({ stretch }) => stretch && `width: 100%;`}
 `;
@@ -18,6 +19,7 @@ export const StyledTextfieldLabel = styled.p<StyledTextfieldLabelProps>`
   font-size: 12px;
   line-height: 16px;
   margin: 0;
+  font-family: var(--font-main), sans-serif;
 
   color: ${({ theme, error }) =>
     error
@@ -33,6 +35,7 @@ export const StyledTextfield = styled.div<StyledTextfieldProps>`
   box-sizing: border-box;
   border-radius: 12px;
   transition: border-color 0.2s;
+  font-family: var(--font-main), sans-serif;
 
   &[disabled] {
     cursor: not-allowed;

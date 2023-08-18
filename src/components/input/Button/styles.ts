@@ -14,6 +14,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   justify-content: center;
   user-select: none;
   font-weight: 400;
+  font-family: var(--font-main), sans-serif;
 
   &[disabled] {
     cursor: not-allowed;
