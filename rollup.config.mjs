@@ -44,7 +44,6 @@ const config = sources.map((source) => ({
         [
           "@babel/preset-env",
           {
-            debug: true,
             targets: {
               browsers: [
                 "last 2 versions",
