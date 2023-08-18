@@ -41,7 +41,20 @@ const config = sources.map((source) => ({
     babel({
       exclude: "node_modules/**",
       presets: [
-        "@babel/preset-env",
+        [
+          "@babel/preset-env",
+          {
+            debug: true,
+            targets: {
+              browsers: [
+                "last 2 versions",
+                "not dead",
+                "not ios < 12",
+                "not safari < 12",
+              ],
+            },
+          },
+        ],
         "@babel/preset-react",
         "@babel/preset-typescript",
       ],
