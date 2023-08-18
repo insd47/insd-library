@@ -11,7 +11,6 @@ const sources = [
   "src/components/generic/index.ts",
   "src/components/input/index.ts",
   "src/theme/index.tsx",
-  "src/fonts.ts",
 ];
 
 const config = sources.map((source) => ({
