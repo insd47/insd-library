@@ -1,6 +1,6 @@
 {
   "name": "@insd47/library",
-  "version": "0.1.20-alpha",
+  "version": "0.1.21-alpha",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -24,7 +24,8 @@
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "publish": "npm run build && npm publish"
   },
   "dependencies": {
     "@next/font": "^13.3.0"
