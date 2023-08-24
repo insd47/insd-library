@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { StyledIconProps, StyledIconButtonProps } from "./types";
+import InsdIcons from "./insd-icons.ttf";
 
 export const StyledIconButton = styled.button<StyledIconButtonProps>`
   padding: 0;
@@ -39,6 +40,11 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
 `;
 
 export const StyledIcon = styled.i<StyledIconProps>`
+  @font-face {
+    font-family: insdIcons;
+    src: url(${InsdIcons}) format("truetype");
+  }
+
   font-family: insdIcons;
   speak: never;
   font-style: normal;

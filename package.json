@@ -1,38 +1,6 @@
 {
   "name": "@insd47/library",
-  "version": "0.1.21-alpha",
-  "license": "MIT",
-  "type": "module",
-  "exports": {
-    "./theme": {
-      "import": "./dist/theme/index.js",
-      "types": "./dist/theme/index.d.ts"
-    },
-    "./generic": {
-      "import": "./dist/components/generic/index.js",
-      "types": "./dist/components/generic/index.d.ts"
-    },
-    "./input": {
-      "import": "./dist/components/input/index.js",
-      "types": "./dist/components/input/index.d.ts"
-    },
-    "./fonts": {
-      "import": "./public/fonts.css"
-    }
-  },
-  "scripts": {
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "build": "rollup -c",
-    "release": "rollup -c && npm publish"
-  },
-  "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript": "^5.1.6",
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6"
-  },
+  "version": "0.1.24-alpha",
   "devDependencies": {
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
@@ -42,6 +10,7 @@
     "@rollup/plugin-commonjs": "^25.0.4",
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-typescript": "^11.1.2",
+    "@rollup/plugin-url": "^8.0.1",
     "@storybook/addon-essentials": "^7.0.6",
     "@storybook/addon-interactions": "^7.0.6",
     "@storybook/addon-links": "^7.0.6",
@@ -65,12 +34,43 @@
     "react-dom": "18.2.0",
     "rollup": "^3.28.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-preserve-directives": "^0.2.0",
     "storybook": "^7.2.0",
     "typescript": "^5.1.6"
   },
-  "dependencies": {
-    "rollup-plugin-copy": "^3.4.0"
-  }
+  "peerDependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.1.6"
+  },
+  "exports": {
+    "./theme": {
+      "import": "./dist/theme/index.js",
+      "types": "./dist/theme/index.d.ts"
+    },
+    "./generic": {
+      "import": "./dist/components/generic/index.js",
+      "types": "./dist/components/generic/index.d.ts"
+    },
+    "./input": {
+      "import": "./dist/components/input/index.js",
+      "types": "./dist/components/input/index.d.ts"
+    },
+    "./fonts": {
+      "import": "./public/fonts.css"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "build": "rollup -c",
+    "release": "rollup -c && npm publish"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "type": "module"
 }
