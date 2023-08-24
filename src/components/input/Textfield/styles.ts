@@ -38,6 +38,8 @@ export const StyledTextfield = styled.div<StyledTextfieldProps>`
   transition: border-color 0.2s;
   font-family: var(--font-main), sans-serif;
 
+  align-items: center;
+
   &[disabled] {
     cursor: not-allowed;
     ${({ theme }) => `

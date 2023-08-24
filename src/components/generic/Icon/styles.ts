@@ -11,13 +11,19 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
   cursor: pointer;
   position: relative;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
   &:after {
     content: "";
     position: absolute;
-    width: 150%;
-    height: 150%;
-    left: -25%;
-    top: -25%;
+    width: 200%;
+    height: 200%;
+    left: -50%;
+    top: -50%;
     background-color: transparent;
     pointer-events: none;
     transition: background-color 0.1s;
@@ -30,11 +36,11 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
     {
       hover: `
         &:after {
-          background-color: ${theme.colors.box.foreground[3]} !important;
+          background-color: ${theme.colors.box.filled[2]} !important;
         }`,
       pressed: `
         &:after {
-          background-color: ${theme.colors.box.foreground[1]};
+          background-color: ${theme.colors.box.filled[1]};
         }`,
     }[isPressed ? "pressed" : "hover"]}
 `;
@@ -44,6 +50,11 @@ export const StyledIcon = styled.i<StyledIconProps>`
     font-family: insdIcons;
     src: url(${InsdIcons}) format("truetype");
   }
+
+  ${({ size }) => ({
+    width: size,
+    height: size,
+  })}
 
   font-family: insdIcons;
   speak: never;

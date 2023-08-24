@@ -36,14 +36,15 @@ const Icon = forwardRef<HTMLSpanElement, PropsWithChildren<IconProps>>(
       <StyledIconButton
         {...pointerEvents}
         {...pointerValues}
+        size={size}
         onClick={action ? () => action() : undefined}
       >
-        <StyledIcon ref={ref} CSSValues={CSSValues} {...props}>
+        <StyledIcon ref={ref} size={size} CSSValues={CSSValues} {...props}>
           {type}
         </StyledIcon>
       </StyledIconButton>
     ) : (
-      <StyledIcon ref={ref} CSSValues={CSSValues} {...props}>
+      <StyledIcon size={size} ref={ref} CSSValues={CSSValues} {...props}>
         {type}
       </StyledIcon>
     );
