@@ -12,7 +12,7 @@ export const StyledTextfieldContainer = styled.div<StyledTextfieldContainerProps
   font-family: var(--font-main), sans-serif;
   width: 200px;
 
-  ${({ stretch }) => stretch && `width: 100%;`}
+  ${({ stretch }) => stretch && `width: 100% !important;`}
 `;
 
 export const StyledTextfieldLabel = styled.p<StyledTextfieldLabelProps>`
