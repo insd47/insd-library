@@ -10,9 +10,8 @@ export const StyledTextfieldContainer = styled.div<StyledTextfieldContainerProps
   flex-direction: column;
   row-gap: 6px;
   font-family: var(--font-main), sans-serif;
-  width: 200px;
 
-  ${({ stretch }) => stretch && `width: 100% !important;`}
+  ${({ stretch }) => (stretch ? "width: 100%;" : "width: 200px;")}
 `;
 
 export const StyledTextfieldLabel = styled.p<StyledTextfieldLabelProps>`

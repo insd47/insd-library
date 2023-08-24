@@ -1,6 +1,6 @@
 {
   "name": "@insd47/library",
-  "version": "0.1.26-alpha",
+  "version": "0.1.27-alpha",
   "devDependencies": {
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
