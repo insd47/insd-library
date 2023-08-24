@@ -39,7 +39,7 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
 `;
 
 export const StyledIcon = styled.i<StyledIconProps>`
-  font-family: var(--font-icon);
+  font-family: insdIcons;
   speak: never;
   font-style: normal;
   font-weight: normal;

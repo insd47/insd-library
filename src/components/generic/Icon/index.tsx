@@ -6,6 +6,7 @@ import { StyledIcon, StyledIconButton } from "./styles";
 import type { IconProps } from "./types";
 
 import { usePointerEvents } from "../../../tools";
+import "./main.css";
 
 const Icon = forwardRef<HTMLSpanElement, PropsWithChildren<IconProps>>(
   (

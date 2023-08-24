@@ -1,6 +1,8 @@
 import { Theme, css } from "@emotion/react";
 
 const global = (theme: Theme) => css`
+  @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css");
+
   :root {
     font-size: 14px;
     color: ${theme.colors.text.main + ""};
@@ -15,6 +17,7 @@ const global = (theme: Theme) => css`
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
     /* colors */
+
     --color-text-main: ${theme.colors.text.main + ""};
     --color-text-passive-1: ${theme.colors.text.passive[1] + ""};
     --color-text-passive-2: ${theme.colors.text.passive[2] + ""};
@@ -40,7 +43,7 @@ const global = (theme: Theme) => css`
 
   h1,
   .text-title-1 {
-    font-family: var(--font-main), sans-serif;
+    font-family: Pretendard, sans-serif;
     font-size: 26px;
     line-height: 34px;
     font-weight: 700;
@@ -48,7 +51,7 @@ const global = (theme: Theme) => css`
 
   h2,
   .text-title-2 {
-    font-family: var(--font-main), sans-serif;
+    font-family: Pretendard, sans-serif;
     font-size: 22px;
     line-height: 30px;
     font-weight: 700;
@@ -56,28 +59,28 @@ const global = (theme: Theme) => css`
 
   h3,
   .text-title-3 {
-    font-family: var(--font-main), sans-serif;
+    font-family: Pretendard, sans-serif;
     font-size: 18px;
     line-height: 24px;
     font-weight: 700;
   }
 
   .text-paragraph-1 {
-    font-family: var(--font-main), sans-serif;
+    font-family: Pretendard, sans-serif;
     font-size: 16px;
     line-height: 28px;
     font-weight: 400;
   }
 
   .text-paragraph-2 {
-    font-family: var(--font-main), sans-serif;
+    font-family: Pretendard, sans-serif;
     font-size: 14px;
     line-height: 24px;
     font-weight: 400;
   }
 
   .text-ui-1 {
-    font-family: var(--font-main), sans-serif;
+    font-family: Pretendard, sans-serif;
     font-size: 16px;
     line-height: 22px;
     font-weight: 400;
@@ -86,14 +89,14 @@ const global = (theme: Theme) => css`
   p,
   span,
   .text-ui-2 {
-    font-family: var(--font-main), sans-serif;
+    font-family: Pretendard, sans-serif;
     font-size: 14px;
     line-height: 18px;
     font-weight: 400;
   }
 
   .text-ui-3 {
-    font-family: var(--font-main), sans-serif;
+    font-family: Pretendard, sans-serif;
     font-size: 12px;
     line-height: 16px;
     font-weight: 400;
@@ -104,9 +107,10 @@ const global = (theme: Theme) => css`
   }
 
   body {
-    font-family: var(--font-main), sans-serif;
+    font-family: Pretendard, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   :root:has(body[data-reduce="true"]) *,

@@ -4,7 +4,7 @@ export default create({
   base: "dark",
 
   // Typography
-  fontBase: `var(--font-main), sans-serif`,
+  fontBase: `Pretendard, sans-serif`,
   fontCode: "monospace",
 
   brandTitle: "insd",

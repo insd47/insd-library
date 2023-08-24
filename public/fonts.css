@@ -1,14 +1,1 @@
-@font-face {
-  font-family: Pretendard;
-  src: url('../fonts/PretendardVariable.woff2') format("woff2");
-}
-
-@font-face {
-  font-family: insdIcons;
-  src: url('../fonts/insd-icons.ttf') format("ttf");
-}
-
-:root {
-  --font-main: Pretendard;
-  --font-icon: insdIcons
-}
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css");

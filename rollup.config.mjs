@@ -4,6 +4,7 @@ import { nodeResolve } from "@rollup/plugin-node-resolve";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import typescript from "@rollup/plugin-typescript";
 import preserveDirectives from "rollup-plugin-preserve-directives";
+import copy from "rollup-plugin-copy";
 
 const extensions = [".js", ".jsx", ".ts", ".tsx", ".mjs"];
 
@@ -11,7 +12,6 @@ const sources = [
   "src/components/generic/index.ts",
   "src/components/input/index.ts",
   "src/theme/index.tsx",
-  "src/fonts.ts",
 ];
 
 const config = sources.map((source) => ({
@@ -58,10 +58,31 @@ const config = sources.map((source) => ({
         "@babel/preset-typescript",
       ],
       extensions,
+      plugins: [
+        [
+          "transform-require-ignore",
+          {
+            extensions: [".css"],
+          },
+        ],
+      ],
       include: ["src/**/*"],
     }),
     preserveDirectives({
+      supressPreserveModulesWarning: true,
       include: ["use strict", "global", "use client"],
+    }),
+    copy({
+      targets: [
+        {
+          src: "src/components/generic/Icon/main.css",
+          dest: "dist/components/generic/Icon",
+        },
+        {
+          src: "src/components/generic/Icon/insd-icons.ttf",
+          dest: "dist/components/generic/Icon",
+        },
+      ],
     }),
   ],
 }));

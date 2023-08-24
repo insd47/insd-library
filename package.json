@@ -17,8 +17,7 @@
       "types": "./dist/components/input/index.d.ts"
     },
     "./fonts": {
-      "import": "./dist/fonts.js",
-      "types": "./dist/fonts.d.ts"
+      "import": "./public/fonts.css"
     }
   },
   "scripts": {
@@ -26,9 +25,6 @@
     "build-storybook": "storybook build",
     "build": "rollup -c",
     "release": "rollup -c && npm publish"
-  },
-  "dependencies": {
-    "@next/font": "^13.3.0"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -60,6 +56,7 @@
     "@types/node": "18.15.11",
     "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",
+    "babel-plugin-transform-require-ignore": "^0.1.1",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
     "eslint-plugin-storybook": "^0.6.11",
@@ -68,8 +65,12 @@
     "react-dom": "18.2.0",
     "rollup": "^3.28.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-preserve-directives": "^0.2.0",
     "storybook": "^7.2.0",
     "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "rollup-plugin-copy": "^3.4.0"
   }
 }

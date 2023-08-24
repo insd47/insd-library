@@ -3,7 +3,7 @@
 .storybook
 node_modules
 src
-.public/fonts.css
+public
 .babelrc
 .env.local
 .eslintrc.json

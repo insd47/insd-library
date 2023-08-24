@@ -10,6 +10,7 @@ export const StyledTextfieldContainer = styled.div<StyledTextfieldContainerProps
   flex-direction: column;
   row-gap: 6px;
   font-family: var(--font-main), sans-serif;
+  width: 200px;
 
   ${({ stretch }) => stretch && `width: 100%;`}
 `;
@@ -31,7 +32,7 @@ export const StyledTextfield = styled.div<StyledTextfieldProps>`
   position: relative;
   display: flex;
   column-gap: 6px;
-  padding: 12px;
+  padding: 0 12px;
   box-sizing: border-box;
   border-radius: 12px;
   transition: border-color 0.2s;
@@ -70,7 +71,7 @@ export const StyledTextfield = styled.div<StyledTextfieldProps>`
   })}
 
   & > input {
-    flex: 1;
+    width: 100%;
     outline: 0;
     background-color: transparent;
     color: inherit;
@@ -78,7 +79,7 @@ export const StyledTextfield = styled.div<StyledTextfieldProps>`
     font-size: 14px;
     line-height: 18px;
     border: 0;
-    padding: 0;
+    padding: 12px 0;
 
     &::placeholder {
       color: ${({ theme }) => theme.colors.text.passive[1] + ""};
