@@ -36,6 +36,7 @@ export const StyledTextfield = styled.div<StyledTextfieldProps>`
   border-radius: 12px;
   transition: border-color 0.2s;
   font-family: var(--font-main), sans-serif;
+  width: 100%;
 
   align-items: center;
 

@@ -34,14 +34,13 @@ const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
   ) => {
     const CSSValues = {
       margin,
-      width: stretch ? "100%" : undefined,
       marginBottom: bottom,
     };
 
     const { pointerEvents, pointerValues } = usePointerEvents();
 
     return (
-      <StyledTextfieldContainer>
+      <StyledTextfieldContainer stretch={stretch}>
         {label && <StyledTextfieldLabel>{label}</StyledTextfieldLabel>}
         <StyledTextfield
           ref={ref}
