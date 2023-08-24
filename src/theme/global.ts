@@ -131,19 +131,11 @@ const global = (theme: Theme) => css`
   body {
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    height: 100%;
   }
 
   #storybook-docs {
     height: 100%;
     overflow-y: auto;
-  }
-
-  #root,
-  #_next {
-    overflow: hidden;
-    height: 100%;
   }
 
   html {
