@@ -1,6 +1,6 @@
 {
   "name": "@insd47/library",
-  "version": "0.1.27-alpha",
+  "version": "0.1.30-alpha",
   "devDependencies": {
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
@@ -57,9 +57,6 @@
     "./input": {
       "import": "./dist/components/input/index.js",
       "types": "./dist/components/input/index.d.ts"
-    },
-    "./fonts": {
-      "import": "./public/fonts.css"
     }
   },
   "license": "MIT",
@@ -69,8 +66,5 @@
     "build": "rollup -c",
     "release": "rollup -c && npm publish"
   },
-  "sideEffects": [
-    "*.css"
-  ],
   "type": "module"
 }

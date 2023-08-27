@@ -65,7 +65,7 @@ const config = sources.map((source) => ({
       include: ["use strict", "global", "use client"],
     }),
     url({
-      include: ["**/*.ttf"],
+      include: ["**/*.woff"],
       limit: Infinity,
       fileName: "[dirname][name][extname]",
     }),

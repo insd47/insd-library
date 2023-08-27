@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { StyledIconProps, StyledIconButtonProps } from "./types";
-import InsdIcons from "./insd-icons.ttf";
+import InsdIcons from "./insd-icons.woff";
 
 export const StyledIconButton = styled.button<StyledIconButtonProps>`
   padding: 0;
