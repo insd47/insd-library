@@ -42,3 +42,12 @@ export const Loading: Story = {
     loading: true,
   },
 };
+
+export const Icon: Story = {
+  args: {
+    type: "linear",
+    size: "medium",
+    icon: "link",
+    children: "",
+  },
+};

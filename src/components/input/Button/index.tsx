@@ -36,12 +36,20 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(
       width: stretch ? "100%" : undefined,
       padding:
         size === "big"
-          ? "15px 26px"
+          ? children
+            ? "15px 26px"
+            : "15px 15px"
           : size === "medium"
-          ? "11px 17px"
+          ? children
+            ? "11px 17px"
+            : "11px 11px"
           : size === "small"
-          ? "7px 11px"
-          : "4px 7px",
+          ? children
+            ? "7px 11px"
+            : "7px 7px"
+          : children
+          ? "4px 7px"
+          : "4px 4px",
       fontSize: size !== "tiny" ? 14 : 12,
       marginBottom: bottom,
     };
@@ -76,7 +84,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(
         {icon && (
           <Icon
             type={icon}
-            right={size === "tiny" ? 3 : 4}
+            right={children ? (size === "tiny" ? 3 : 4) : 0}
             size={size === "tiny" ? 16 : 18}
           />
         )}
