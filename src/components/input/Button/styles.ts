@@ -16,6 +16,9 @@ const StyledButton = styled.button<StyledButtonProps>`
   font-weight: 400;
   font-family: var(--font-main), sans-serif;
 
+  flex-shrink: 0;
+  flex-grow: 0;
+
   &[disabled] {
     cursor: not-allowed;
     ${({ theme }) => `
