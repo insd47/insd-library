@@ -1,3 +1,4 @@
+export { default as Box } from "./Box";
 export { default as Icon } from "./Icon";
 export { default as Loading } from "./Loading";
 export { default as Disabler } from "./Disabler";
