@@ -17,6 +17,9 @@ const sources = [
 const config = sources.map((source) => ({
   external: [/node_modules/],
   input: source,
+  treeshake: {
+    annotations: false,
+  },
   output: [
     {
       dir: "./dist",
@@ -59,6 +62,7 @@ const config = sources.map((source) => ({
       ],
       extensions,
       include: ["src/**/*"],
+      plugins: ["@emotion"],
     }),
     preserveDirectives({
       supressPreserveModulesWarning: true,
