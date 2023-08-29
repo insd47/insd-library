@@ -12,11 +12,11 @@ const Box = forwardRef<HTMLDivElement, PropsWithChildren<BoxProps>>(
       margin,
       padding,
       children,
-      background,
+      background = "fg2",
       customBackground,
-      border,
+      border = 2,
       customBorder,
-      radius,
+      radius = 2,
       customRadius,
       ...props
     },
@@ -54,15 +54,9 @@ const Box = forwardRef<HTMLDivElement, PropsWithChildren<BoxProps>>(
       <StyledBox
         ref={ref}
         CSSValues={CSSValues}
-        background={
-          customBackground ?? background
-            ? backgroundStyles[background] + ""
-            : "transparent"
-        }
-        border={
-          customBorder ?? border ? borderStyles[border] + "" : "transparent"
-        }
-        radius={customRadius ?? radius ? radiusStyles[radius] : 0}
+        background={customBackground ?? backgroundStyles[background] + ""}
+        border={customBorder ?? borderStyles[border] + ""}
+        radius={customRadius ?? radiusStyles[radius]}
         {...props}
       >
         {children}
