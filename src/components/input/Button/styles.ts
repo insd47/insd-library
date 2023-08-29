@@ -1,13 +1,16 @@
 import styled from "@emotion/styled";
 import { StyledButtonProps, ButtonType } from "./types";
 
+const getPointerType = (isHover?: boolean, isPressed?: boolean) =>
+  isHover ? (isPressed ? "pressed" : "hover") : "default";
+
 const StyledButton = styled.button<StyledButtonProps>`
   position: relative;
   outline: 0;
   border-radius: 8px;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: opacity 0.1s, transform 0.1s;
+  transition: background-color 0.1s, color 0.1s, border-color 0.1s, opacity 0.1s, transform 0.1s;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -40,37 +43,55 @@ const StyledButton = styled.button<StyledButtonProps>`
   }
 
   ${({ isHover, isPressed }) =>
-    isHover
-      ? isPressed
-        ? "transform: scale(0.98); opacity: 0.6;"
-        : "opacity: 0.8;"
-      : ""}
-  
-  ${({ buttonType, theme }) =>
     ({
-      filled: `
-        border-color: transparent;
+      default: "",
+      hover: "",
+      pressed: "transform: scale(0.98);",
+    }[getPointerType(isHover, isPressed)])}
+  
+  ${({ buttonType, isHover, isPressed, theme }) =>
+    ({
+      filled:
+        `border-color: transparent;
         background-color: ${theme.colors.text.main};
-        color: ${theme.colors.box.background};
-      `,
+        color: ${theme.colors.box.background};` +
+        {
+          default: "",
+          hover: `background-color: ${theme.colors.text.main.alpha(80)};`,
+          pressed: `background-color: ${theme.colors.text.main.alpha(60)};`,
+        }[getPointerType(isHover, isPressed)],
 
-      linear: `
-        border-color: ${theme.colors.box.border[1]};
+      linear:
+        `border-color: ${theme.colors.box.border[1]};
         background-color: ${theme.colors.box.foreground[3]};
-        color: ${theme.colors.text.main};
-      `,
+        color: ${theme.colors.text.main};` +
+        {
+          default: "",
+          hover: `border-color: ${theme.colors.text.passive[2]};`,
+          pressed: `color: ${theme.colors.text.passive[2]}; 
+            border-color: ${theme.colors.box.border[2]};`,
+        }[getPointerType(isHover, isPressed)],
 
-      warn: `
-        border-color: transparent;
+      warn:
+        `border-color: transparent;
         color: white;
-        background-color: ${theme.colors.secondary.red};
-      `,
+        background-color: ${theme.colors.secondary.red};` +
+        {
+          default: "",
+          hover: `background-color: ${theme.colors.secondary.red.alpha(80)};`,
+          pressed: `background-color: ${theme.colors.secondary.red.alpha(60)};`,
+        }[getPointerType(isHover, isPressed)],
 
-      transparent: `
-        border-color: transparent;
+      transparent:
+        `border-color: transparent;
         color: ${theme.colors.text.main};
-        background-color: transparent;
-      `,
+        background-color: transparent;` +
+        {
+          default: "",
+          hover: `background-color: ${theme.colors.box.filled[2]};`,
+          pressed: `background-color: ${theme.colors.box.filled[3]};
+            color: ${theme.colors.text.passive[2]};`,
+        }[getPointerType(isHover, isPressed)],
     }[buttonType as ButtonType])}
 
   ${({ CSSValues }) => ({ ...CSSValues })})}
