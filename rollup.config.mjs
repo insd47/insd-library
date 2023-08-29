@@ -18,7 +18,7 @@ const config = sources.map((source) => ({
   external: [/node_modules/],
   input: source,
   treeshake: {
-    annotations: false,
+    moduleSideEffects: ["**/*.styles.ts"],
   },
   output: [
     {
@@ -47,6 +47,7 @@ const config = sources.map((source) => ({
         [
           "@babel/preset-env",
           {
+            modules: false,
             targets: {
               browsers: [
                 "last 2 versions",

@@ -2,7 +2,7 @@
 
 import React, { PropsWithChildren, forwardRef } from "react";
 
-import StyledComponent from "./styles";
+import StyledBox from "./styles";
 import type { BoxProps } from "./types";
 import { useTheme } from "@emotion/react";
 
@@ -51,7 +51,7 @@ const Box = forwardRef<HTMLDivElement, PropsWithChildren<BoxProps>>(
     };
 
     return (
-      <StyledComponent
+      <StyledBox
         ref={ref}
         CSSValues={CSSValues}
         background={
@@ -66,7 +66,7 @@ const Box = forwardRef<HTMLDivElement, PropsWithChildren<BoxProps>>(
         {...props}
       >
         {children}
-      </StyledComponent>
+      </StyledBox>
     );
   }
 );
