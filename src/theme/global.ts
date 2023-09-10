@@ -37,6 +37,13 @@ const global = (theme: Theme) => css`
     --color-secondary-green: ${theme.colors.secondary.green + ""};
     --color-secondary-blue: ${theme.colors.secondary.blue + ""};
     --color-secondary-yellow: ${theme.colors.secondary.yellow + ""};
+
+    /* radius */
+    --radius-1: ${theme.variables.radius[1]};
+    --radius-2: ${theme.variables.radius[2]};
+    --radius-3: ${theme.variables.radius[3]};
+    --radius-4: ${theme.variables.radius[4]};
+    --radius-5: ${theme.variables.radius[5]};
   }
 
   /* text styles */

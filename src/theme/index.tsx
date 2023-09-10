@@ -100,11 +100,22 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
     [mode]
   );
 
+  const variables = {
+    radius: {
+      1: "12px",
+      2: "10px",
+      3: "8px",
+      4: "6px",
+      5: "4px",
+    },
+  };
+
   const theme: Theme = useMemo(
     () => ({
       mode: mode,
       colors: colors[mode],
       absolute: absolute[mode],
+      variables,
       change,
     }),
     [mode]
