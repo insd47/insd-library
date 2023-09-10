@@ -3,7 +3,7 @@
 import React, { PropsWithChildren, forwardRef } from "react";
 
 import { StyledIcon, StyledIconButton } from "./styles";
-import iconTypes from "./fonts/types.js";
+import iconTypes from "./fonts/types";
 import type { IconProps } from "./types";
 
 import { usePointerEvents } from "../../../tools";

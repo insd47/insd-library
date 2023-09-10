@@ -1,6 +1,6 @@
 import { CSSProperties, HTMLAttributes } from "react";
 
-import { IconType } from "../../generic/Icon/types";
+import { IconType } from "../../generic";
 
 export type ButtonType = "filled" | "linear" | "warn" | "transparent";
 export type ButtonSize = "big" | "medium" | "small" | "tiny";

@@ -1,8 +1,6 @@
 import { CSSProperties, HTMLAttributes } from "react";
 
-import iconTypes from "./fonts/types.js";
-
-export type IconType = keyof typeof iconTypes;
+import type { IconType } from "./fonts/types";
 
 interface CommonProps extends HTMLAttributes<HTMLDivElement> {}
 

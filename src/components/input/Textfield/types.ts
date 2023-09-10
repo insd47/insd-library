@@ -1,6 +1,6 @@
 import { CSSProperties, HTMLAttributes } from "react";
 
-import { IconType } from "../../generic/Icon/types";
+import { IconType } from "../../generic";
 
 export interface TextfieldProps extends HTMLAttributes<HTMLInputElement> {
   disabled?: boolean;

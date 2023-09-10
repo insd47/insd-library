@@ -102,4 +102,6 @@ const IconTypes = {
   "warn": "\ue964",
 };
 
+export type IconType = keyof typeof IconTypes;
+
 export default IconTypes;
