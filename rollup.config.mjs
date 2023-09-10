@@ -5,7 +5,6 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import typescript from "@rollup/plugin-typescript";
 import preserveDirectives from "rollup-plugin-preserve-directives";
 import url from "@rollup/plugin-url";
-import json from "@rollup/plugin-json";
 
 const extensions = [".js", ".jsx", ".ts", ".tsx", ".mjs"];
 
@@ -33,7 +32,6 @@ const config = sources.map((source) => ({
     peerDepsExternal(),
     nodeResolve({ extensions }),
     commonjs({ include: "node_modules/**" }),
-    json(),
     typescript({
       tsconfig: "./tsconfig.json",
       declaration: true,

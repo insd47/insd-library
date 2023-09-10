@@ -1,4 +1,4 @@
-{
+const IconTypes = {
   "arrow-1-down": "\ue900",
   "arrow-1-left": "\ue901",
   "arrow-1-right": "\ue902",
@@ -99,5 +99,7 @@
   "upload": "\ue961",
   "user-f": "\ue962",
   "user": "\ue963",
-  "warn": "\ue964"
-}
+  "warn": "\ue964",
+};
+
+export default IconTypes;

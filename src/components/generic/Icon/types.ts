@@ -1,6 +1,6 @@
 import { CSSProperties, HTMLAttributes } from "react";
 
-import iconTypes from "./fonts/types.json";
+import iconTypes from "./fonts/types.js";
 
 export type IconType = keyof typeof iconTypes;
 
