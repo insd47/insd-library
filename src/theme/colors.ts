@@ -139,6 +139,10 @@ export const colors = {
         2: absolute.light.gray.elevation(20),
         3: absolute.light.gray.elevation(15),
       },
+      shadow: {
+        1: new InsdColor(0, 0, 0, "light", { alpha: 20 }),
+        2: new InsdColor(0, 0, 0, "light", { alpha: 8 }),
+      },
     },
     secondary: {
       red: absolute.light.red,
@@ -173,6 +177,10 @@ export const colors = {
         1: absolute.dark.gray.elevation(25),
         2: absolute.dark.gray.elevation(20),
         3: absolute.dark.gray.elevation(15),
+      },
+      shadow: {
+        1: new InsdColor(0, 0, 0, "dark", { alpha: 60 }),
+        2: new InsdColor(0, 0, 0, "dark", { alpha: 30 }),
       },
     },
     secondary: {

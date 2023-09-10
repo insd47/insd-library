@@ -44,6 +44,10 @@ interface colors {
       2: InsdColor;
       3: InsdColor;
     };
+    shadow: {
+      1: InsdColor;
+      2: InsdColor;
+    };
   };
   secondary: {
     red: InsdColor;
