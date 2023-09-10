@@ -11,8 +11,8 @@ const meta: Meta<typeof Icon> = {
     layout: "centered",
   },
   args: {
-    type: "trash",
-    size: 48,
+    type: "statistic",
+    size: 36,
   },
 };
 
@@ -21,7 +21,7 @@ type Story = StoryObj<typeof Icon>;
 
 export const Default: Story = {
   args: {
-    type: "trash",
-    size: 48,
+    type: "statistic",
+    size: 36,
   },
 };

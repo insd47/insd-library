@@ -3,6 +3,7 @@
 import React, { PropsWithChildren, forwardRef } from "react";
 
 import { StyledIcon, StyledIconButton } from "./styles";
+import iconTypes from "./fonts/types.json";
 import type { IconProps } from "./types";
 
 import { usePointerEvents } from "../../../tools";
@@ -15,6 +16,7 @@ const Icon = forwardRef<HTMLSpanElement, PropsWithChildren<IconProps>>(
       pressable,
       action,
       size = 24,
+      buttonSize,
       margin,
       padding,
       right,
@@ -36,16 +38,16 @@ const Icon = forwardRef<HTMLSpanElement, PropsWithChildren<IconProps>>(
       <StyledIconButton
         {...pointerEvents}
         {...pointerValues}
-        size={size}
+        size={buttonSize ?? Math.floor(size * 1.5)}
         onClick={action ? () => action() : undefined}
       >
         <StyledIcon ref={ref} size={size} CSSValues={CSSValues} {...props}>
-          {type}
+          {iconTypes[type]}
         </StyledIcon>
       </StyledIconButton>
     ) : (
       <StyledIcon size={size} ref={ref} CSSValues={CSSValues} {...props}>
-        {type}
+        {iconTypes[type]}
       </StyledIcon>
     );
   }

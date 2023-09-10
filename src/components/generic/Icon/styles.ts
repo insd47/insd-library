@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { StyledIconProps, StyledIconButtonProps } from "./types";
-import InsdIcons from "./insd-icons.woff";
+import InsdIcons from "./fonts/glyphs.woff";
 
 export const StyledIconButton = styled.button<StyledIconButtonProps>`
   padding: 0;
@@ -9,40 +9,27 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
   border: 0;
   line-height: 1;
   cursor: pointer;
-  position: relative;
+  border-radius: ${({ size }) => Math.floor(size / 4)}px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   flex-shrink: 0;
-
-  &:after {
-    content: "";
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    left: -50%;
-    top: -50%;
-    background-color: transparent;
-    pointer-events: none;
-    transition: background-color 0.1s;
-    border-radius: 50%;
-    z-index: -1;
-  }
+  background-color: transparent;
+  transition: background-color 0.1s;
 
   ${({ theme, isHover, isPressed }) =>
     isHover &&
     {
-      hover: `
-        &:after {
-          background-color: ${theme.colors.box.filled[2]} !important;
-        }`,
-      pressed: `
-        &:after {
-          background-color: ${theme.colors.box.filled[1]};
-        }`,
+      hover: `background-color: ${theme.colors.box.filled[2]} !important;`,
+      pressed: `background-color: ${theme.colors.box.filled[1]};`,
     }[isPressed ? "pressed" : "hover"]}
+
+  ${({ size }) => ({
+    width: size,
+    height: size,
+  })}
 `;
 
 export const StyledIcon = styled.i<StyledIconProps>`

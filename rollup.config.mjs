@@ -6,7 +6,7 @@ import typescript from "@rollup/plugin-typescript";
 import preserveDirectives from "rollup-plugin-preserve-directives";
 import url from "@rollup/plugin-url";
 
-const extensions = [".js", ".jsx", ".ts", ".tsx", ".mjs"];
+const extensions = [".js", ".jsx", ".ts", ".tsx", ".mjs", ".json"];
 
 const sources = [
   "src/components/generic/index.ts",
