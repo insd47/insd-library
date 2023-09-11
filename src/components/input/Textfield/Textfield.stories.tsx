@@ -22,6 +22,14 @@ export const Default: Story = {
   },
 };
 
+export const Small: Story = {
+  args: {
+    size: "small",
+    icon: "search",
+    placeholder: "검색",
+  },
+};
+
 export const Label = {
   args: {
     label: "이메일 주소",

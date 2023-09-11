@@ -4,6 +4,7 @@ import { IconType } from "../../generic";
 
 export interface TextfieldProps extends HTMLAttributes<HTMLInputElement> {
   disabled?: boolean;
+  size?: "medium" | "small";
   margin?: CSSProperties["margin"];
   bottom?: CSSProperties["marginBottom"];
   stretch?: boolean;
@@ -33,4 +34,6 @@ export interface StyledTextfieldProps extends HTMLAttributes<HTMLDivElement> {
   isPressed?: boolean;
   disabled?: boolean;
   error?: boolean;
+  size?: "medium" | "small";
+  rightIconButton?: boolean;
 }

@@ -16,6 +16,7 @@ const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
   (
     {
       disabled,
+      size = "medium",
       margin,
       bottom,
       stretch,
@@ -47,10 +48,12 @@ const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
           CSSValues={CSSValues}
           disabled={disabled}
           error={error !== undefined}
+          size={size}
+          rightIconButton={rightIconButton !== undefined}
           {...pointerEvents}
           {...pointerValues}
         >
-          {icon && <Icon size={18} type={icon} />}
+          {icon && <Icon size={16} type={icon} />}
           <input
             type={type}
             value={value}
@@ -60,8 +63,12 @@ const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
           />
           {rightIconButton && (
             <Icon
-              size={18}
+              size={16}
+              buttonSize={size === "medium" ? 32 : 24}
               type={rightIconButton}
+              style={{
+                marginRight: "-3px",
+              }}
               action={rightIconAction}
               pressable
             />

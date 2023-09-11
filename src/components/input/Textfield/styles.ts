@@ -32,11 +32,20 @@ export const StyledTextfield = styled.div<StyledTextfieldProps>`
   display: flex;
   column-gap: 6px;
   padding: 0 12px;
+  ${({ rightIconButton }) => (rightIconButton ? "padding-right: 5px;" : "")}
   box-sizing: border-box;
   border-radius: 12px;
   transition: border-color 0.2s;
   font-family: var(--font-main), sans-serif;
   width: 100%;
+
+  ${({ size, rightIconButton }) =>
+    size === "small" &&
+    `height: 34px;
+    padding: 0 10px;
+    border-radius: 10px;
+    ${rightIconButton ? "padding-right: 7px;" : ""}
+  `}
 
   align-items: center;
 
