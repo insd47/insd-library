@@ -33,6 +33,8 @@ const IconTypes = {
   "eye": "\ue91f",
   "fan-f": "\ue920",
   "fan": "\ue921",
+  "file-f": "\ue965",
+  "file": "\ue966",
   "filter": "\ue922",
   "folder": "\ue923",
   "folder-f": "\ue924",
