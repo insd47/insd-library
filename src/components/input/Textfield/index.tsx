@@ -29,6 +29,8 @@ const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
       placeholder,
       type,
       value,
+      className,
+      style,
       ...props
     },
     ref
@@ -41,7 +43,11 @@ const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
     const { pointerEvents, pointerValues } = usePointerEvents();
 
     return (
-      <StyledTextfieldContainer stretch={stretch}>
+      <StyledTextfieldContainer
+        className={className}
+        style={style}
+        stretch={stretch}
+      >
         {label && <StyledTextfieldLabel>{label}</StyledTextfieldLabel>}
         <StyledTextfield
           ref={ref}

@@ -17,6 +17,8 @@ export interface TextfieldProps extends HTMLAttributes<HTMLInputElement> {
   placeholder?: string;
   type?: HTMLInputElement["type"];
   value?: string;
+  className?: string;
+  style?: CSSProperties;
 }
 
 export interface StyledTextfieldContainerProps
