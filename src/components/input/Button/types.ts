@@ -17,7 +17,6 @@ export interface ButtonProps extends CommonProps {
   icon?: IconType;
   type?: ButtonType;
   formType?: originalButtonType;
-  action?: () => void;
   loading?: boolean;
 }
 

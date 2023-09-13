@@ -22,7 +22,6 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(
       stretch,
       type = "linear",
       size = "medium",
-      action,
       formType = "button",
       margin,
       bottom,
@@ -76,7 +75,6 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(
         disabled={disabled || loading}
         isLoading={loading}
         CSSValues={CSSValues}
-        onClick={action ? () => action() : undefined}
         {...pointerEvents}
         {...pointerValues}
         {...props}
