@@ -122,12 +122,12 @@ export const colors = {
       },
     },
     box: {
-      background: absolute.light.gray.elevation(0),
+      background: absolute.light.gray.elevation(3),
       overlay: absolute.light.gray.alpha(65),
       foreground: {
-        1: absolute.light.gray.elevation(8),
-        2: absolute.light.gray.elevation(5),
-        3: absolute.light.gray.elevation(2),
+        1: absolute.light.gray.elevation(3),
+        2: absolute.light.gray.elevation(0),
+        3: absolute.light.gray.elevation(0),
       },
       filled: {
         1: absolute.light.gray.alpha(8),
