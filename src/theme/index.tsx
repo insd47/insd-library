@@ -25,7 +25,7 @@ export type {
 const THEME_MODE = "theme-mode";
 
 const ThemeProvider = ({ children }: PropsWithChildren) => {
-  const [userMode, setUserMode] = useState<UserThemeMode>("auto");
+  const [userMode, setUserMode] = useState<UserThemeMode>("system");
   const [mode, setMode] = useState<ThemeMode>("dark");
 
   useLayoutEffect(() => {
@@ -47,8 +47,8 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
       setUserMode(savedTheme);
       setMode(getNewMode(savedTheme));
     } else {
-      localStorage.setItem(THEME_MODE, "auto");
-      setMode(getNewMode("auto"));
+      localStorage.setItem(THEME_MODE, "system");
+      setMode(getNewMode("system"));
     }
   }, []);
 
@@ -60,7 +60,7 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
   useLayoutEffect(() => {
     const MediaQuery = window?.matchMedia("(prefers-color-scheme: light)");
 
-    if (userMode === "auto") {
+    if (userMode === "system") {
       MediaQuery && MediaQuery.addEventListener("change", listener);
     }
 
@@ -72,7 +72,7 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
   const getNewMode = (userMode: UserThemeMode) => {
     let newMode: ThemeMode = "dark";
 
-    if (userMode === "auto") {
+    if (userMode === "system") {
       if (window.matchMedia("(prefers-color-scheme: light)").matches)
         newMode = "light";
     } else {
@@ -113,6 +113,7 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
   const theme: Theme = useMemo(
     () => ({
       mode: mode,
+      system: userMode === "system",
       colors: colors[mode],
       absolute: absolute[mode],
       variables,

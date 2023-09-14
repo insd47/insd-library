@@ -5,7 +5,7 @@ export type CSSColor = CSSProperties["color"];
 export type ColorWithOpacity = (opacity: number) => CSSColor;
 
 export type ThemeMode = "light" | "dark";
-export type UserThemeMode = ThemeMode | "auto";
+export type UserThemeMode = ThemeMode | "system";
 
 // absolute object
 interface Absolute {
@@ -74,4 +74,5 @@ export interface Theme {
   variables: Variables;
   change: (mode: UserThemeMode) => void;
   mode: ThemeMode;
+  system: boolean;
 }
