@@ -1,4 +1,4 @@
-import { CSSProperties, HTMLAttributes } from "react";
+import { CSSProperties, InputHTMLAttributes } from "react";
 
 import { IconType } from "../../generic";
 
@@ -6,7 +6,8 @@ export type ButtonType = "filled" | "linear" | "warn" | "transparent";
 export type ButtonSize = "big" | "medium" | "small" | "tiny";
 type originalButtonType = "button" | "submit" | "reset";
 
-interface CommonProps extends HTMLAttributes<HTMLButtonElement> {}
+interface CommonProps
+  extends Omit<InputHTMLAttributes<HTMLButtonElement>, "size"> {}
 
 export interface ButtonProps extends CommonProps {
   disabled?: boolean;

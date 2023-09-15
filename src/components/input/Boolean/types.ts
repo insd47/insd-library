@@ -1,7 +1,7 @@
-import type { CSSProperties, HTMLAttributes } from "react";
+import type { CSSProperties, InputHTMLAttributes } from "react";
 
 export interface BooleanProps
-  extends Omit<HTMLAttributes<HTMLInputElement>, "type"> {
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
   type?: "checkbox" | "radio";
   checked?: boolean;
   margin?: CSSProperties["margin"];

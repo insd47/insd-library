@@ -1,8 +1,9 @@
-import { CSSProperties, HTMLAttributes } from "react";
+import { CSSProperties, HTMLAttributes, InputHTMLAttributes } from "react";
 
 import { IconType } from "../../generic";
 
-export interface TextfieldProps extends HTMLAttributes<HTMLInputElement> {
+export interface TextfieldProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
   disabled?: boolean;
   size?: "medium" | "small";
   margin?: CSSProperties["margin"];
