@@ -43,8 +43,7 @@ const StyledBoolean = styled.label<{
 
     transition: border-color 0.1s, background-color 0.1s;
 
-    & > svg {
-      width: 12px;
+    & > svg path {
       fill: transparent;
       transition: fill 0.1s;
     }
@@ -60,8 +59,8 @@ const StyledBoolean = styled.label<{
       isHover &&
       `border-color: ${theme.colors.text.passive[2]};
 
-        & > svg {
-          fill: ${theme.colors.text.passive[3]};
+        & > svg path {
+          fill: ${theme.colors.text.passive[3]} !important;
         }
 
         & > div {
@@ -74,8 +73,8 @@ const StyledBoolean = styled.label<{
         ? `background-color: ${theme.colors.text.main};
       border-color: transparent;
       
-      & > svg {
-        fill: ${theme.colors.box.background};
+      & > svg path {
+        fill: ${theme.colors.box.background} !important;
       }`
         : `border-color: ${theme.colors.text.passive[3]};
 
