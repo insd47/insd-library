@@ -11,6 +11,7 @@ export interface BoxProps extends CommonProps {
   customBackground?: CSSProperties["backgroundColor"];
   customBorder?: CSSProperties["borderColor"];
   customRadius?: CSSProperties["borderRadius"];
+  overflow?: CSSProperties["overflow"];
 }
 
 export interface StyledBoxProps extends CommonProps {

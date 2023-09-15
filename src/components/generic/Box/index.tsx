@@ -13,6 +13,7 @@ const Box = forwardRef<HTMLDivElement, PropsWithChildren<BoxProps>>(
       padding,
       children,
       background = "fg2",
+      overflow = "hidden",
       customBackground,
       border = 2,
       customBorder,
@@ -27,6 +28,7 @@ const Box = forwardRef<HTMLDivElement, PropsWithChildren<BoxProps>>(
     const CSSValues = {
       margin,
       padding,
+      overflow,
     };
 
     const backgroundStyles = {
