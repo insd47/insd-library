@@ -1,9 +1,6 @@
 import styled from "@emotion/styled";
 import type { CSSProperties } from "react";
 
-const getPointerType = (isHover?: boolean, isPressed?: boolean) =>
-  isHover ? (isPressed ? "pressed" : "hover") : "default";
-
 const StyledBoolean = styled.label<{
   type: "checkbox" | "radio";
   reverse?: boolean;
