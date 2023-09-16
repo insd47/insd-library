@@ -73,6 +73,7 @@ export interface Theme {
   absolute: Absolute;
   variables: Variables;
   change: (mode: UserThemeMode) => void;
+  executeTransition: () => void;
   mode: ThemeMode;
   system: boolean;
 }

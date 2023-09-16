@@ -7,6 +7,7 @@ import React, {
   useState,
   useMemo,
   useCallback,
+  useRef,
 } from "react";
 
 import { colors, absolute } from "./colors";
@@ -27,6 +28,8 @@ const THEME_MODE = "theme-mode";
 const ThemeProvider = ({ children }: PropsWithChildren) => {
   const [userMode, setUserMode] = useState<UserThemeMode>("system");
   const [mode, setMode] = useState<ThemeMode>("dark");
+
+  const transitionRef = useRef<NodeJS.Timeout | null>(null);
 
   useLayoutEffect(() => {
     const body = document.querySelector("body");
@@ -82,16 +85,23 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
     return newMode;
   };
 
+  const executeTransition = () => {
+    if (transitionRef.current) clearTimeout(transitionRef.current);
+
+    document.documentElement?.classList.add("transition");
+
+    transitionRef.current = setTimeout(
+      () => document.documentElement?.classList.remove("transition"),
+      300
+    );
+  };
+
   const change = useCallback(
     (userMode: UserThemeMode) => {
       const newMode = getNewMode(userMode);
 
       if (newMode !== mode) {
-        document.documentElement?.classList.add("transition");
-        setTimeout(
-          () => document.documentElement?.classList.remove("transition"),
-          300
-        );
+        executeTransition();
         setMode(newMode);
         setUserMode(newMode);
         localStorage.setItem("theme-mode", newMode);
@@ -118,6 +128,7 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
       absolute: absolute[mode],
       variables,
       change,
+      executeTransition: () => {},
     }),
     [mode]
   );
