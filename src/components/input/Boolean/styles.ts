@@ -4,7 +4,6 @@ import type { CSSProperties } from "react";
 const StyledBoolean = styled.label<{
   type: "checkbox" | "radio";
   reverse?: boolean;
-  checked?: boolean;
   CSSValues?: CSSProperties;
   isHover?: boolean;
   isPressed?: boolean;
@@ -25,6 +24,22 @@ const StyledBoolean = styled.label<{
 
   & > input {
     display: none;
+  }
+
+  & > input:checked + div {
+    ${({ theme, type }) =>
+      type === "checkbox"
+        ? `background-color: ${theme.colors.text.main};
+          border-color: transparent;
+    
+          & > svg path {
+            fill: ${theme.colors.box.background} !important;
+          }`
+        : `border-color: ${theme.colors.text.passive[3]};
+
+          & > div {
+            background-color: ${theme.colors.text.main};
+          }`}
   }
 
   & > div {
@@ -67,20 +82,6 @@ const StyledBoolean = styled.label<{
           background-color: ${theme.colors.text.passive[3]};
         }`}
 
-    ${({ checked, theme, type }) =>
-      checked &&
-      (type === "checkbox"
-        ? `background-color: ${theme.colors.text.main};
-      border-color: transparent;
-      
-      & > svg path {
-        fill: ${theme.colors.box.background} !important;
-      }`
-        : `border-color: ${theme.colors.text.passive[3]};
-
-      & > div {
-        background-color: ${theme.colors.text.main};
-      }`)}
 
   ${({ CSSValues }) => ({ ...CSSValues })}
 `;
