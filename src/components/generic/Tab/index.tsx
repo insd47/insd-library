@@ -50,9 +50,9 @@ export const TabList: React.FC<PropsWithChildren<TabListProps>> = ({
 };
 
 export const Tab = forwardRef<HTMLDivElement, PropsWithChildren<TabProps>>(
-  ({ children, isActive }, ref) => {
+  ({ children, isActive, ...props }, ref) => {
     return (
-      <StyledTab ref={ref} isActive={isActive}>
+      <StyledTab ref={ref} isActive={isActive} {...props}>
         {children}
       </StyledTab>
     );
