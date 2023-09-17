@@ -1,6 +1,6 @@
 "use client";
 
-import React, { forwardRef } from "react";
+import React, { PropsWithChildren, forwardRef } from "react";
 
 import { usePointerEvents } from "../../../tools";
 
@@ -8,17 +8,17 @@ import StyledBoolean from "./styles";
 import Icon from "./icon";
 import type { BooleanProps } from "./types";
 
-const Boolean = forwardRef<HTMLLabelElement, BooleanProps>(
+const Boolean = forwardRef<HTMLLabelElement, PropsWithChildren<BooleanProps>>(
   (
     {
       type = "checkbox",
       margin,
       bottom,
       disabled,
-      label,
       labelDirection = "right",
       className,
       style,
+      children,
       ...props
     },
     ref
@@ -43,7 +43,7 @@ const Boolean = forwardRef<HTMLLabelElement, BooleanProps>(
       >
         <input type={type} {...props} />
         <div>{type === "checkbox" ? <Icon /> : <div />}</div>
-        {label && <span>{label}</span>}
+        {children}
       </StyledBoolean>
     );
   }

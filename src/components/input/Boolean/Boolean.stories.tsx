@@ -19,7 +19,7 @@ export const Checkbox: Story = {};
 
 export const Label: Story = {
   args: {
-    label: "자동 로그인",
+    children: "자동 로그인",
   },
 };
 

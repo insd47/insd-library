@@ -7,7 +7,6 @@ export interface BooleanProps
   margin?: CSSProperties["margin"];
   bottom?: CSSProperties["marginBottom"];
   disabled?: boolean;
-  label?: string;
   labelDirection?: "left" | "right";
   className?: string;
   style?: CSSProperties;
