@@ -57,7 +57,7 @@ const StyledBox = styled.div<StyledBoxProps>`
           radius.bottomRight && radiusStyles[radius.bottomRight],
       }
     );
-  }}}
+  }}
 
   ${({ CSSValues }) => ({ ...CSSValues })}
 `;
