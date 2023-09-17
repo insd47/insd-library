@@ -4,7 +4,7 @@ import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import { CSSProperties } from "react";
 
 export const StyledTabList = styled(OverlayScrollbarsComponent)<{
-  stretchTabs?: boolean;
+  stretchtabs?: boolean;
   margin?: CSSProperties["margin"];
   padding?: CSSProperties["padding"];
   height?: CSSProperties["height"];
@@ -28,7 +28,7 @@ export const StyledTabList = styled(OverlayScrollbarsComponent)<{
   }
 
   & > div[data-overlayscrollbars-contents] {
-    ${({ stretchTabs }) => stretchTabs && "display: flex;"}
+    ${({ stretchtabs }) => stretchtabs && "display: flex;"}
   }
 
   ${({ margin, padding, height }) => ({
@@ -40,7 +40,6 @@ export const StyledTabList = styled(OverlayScrollbarsComponent)<{
 
 export const StyledTab = styled.div<{
   isActive?: boolean;
-  stretchTabs?: boolean;
 }>`
   cursor: pointer;
   position: relative;

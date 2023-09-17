@@ -22,7 +22,7 @@ export const TabList: React.FC<PropsWithChildren<TabListProps>> = ({
 }) => {
   return (
     <StyledTabList
-      stretchTabs={stretch}
+      stretchtabs={stretch}
       padding={padding}
       options={{
         overflow: {
