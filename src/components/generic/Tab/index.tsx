@@ -22,7 +22,7 @@ export const TabList: React.FC<PropsWithChildren<TabListProps>> = ({
 }) => {
   return (
     <StyledTabList
-      stretch={stretch}
+      stretchTabs={stretch}
       padding={padding}
       options={{
         overflow: {
@@ -42,7 +42,6 @@ export const TabList: React.FC<PropsWithChildren<TabListProps>> = ({
         .map((child, i) =>
           cloneElement(child as ReactElement<TabProps>, {
             isActive: index === i,
-            stretch,
             onClick: () => onIndexChange && onIndexChange(i),
           })
         )}
@@ -51,7 +50,11 @@ export const TabList: React.FC<PropsWithChildren<TabListProps>> = ({
 };
 
 export const Tab = forwardRef<HTMLDivElement, PropsWithChildren<TabProps>>(
-  ({ children, isActive }) => {
-    return <StyledTab isActive={isActive}>{children}</StyledTab>;
+  ({ children, isActive }, ref) => {
+    return (
+      <StyledTab ref={ref} isActive={isActive}>
+        {children}
+      </StyledTab>
+    );
   }
 );
