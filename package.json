@@ -1,6 +1,6 @@
 {
   "name": "@insd47/library",
-  "version": "0.1.50-alpha",
+  "version": "0.2.0-alpha",
   "devDependencies": {
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
@@ -62,10 +62,10 @@
   },
   "license": "MIT",
   "scripts": {
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "dev": "storybook dev -p 6006",
     "build": "rollup -c",
-    "release": "rollup -c && npm publish"
+    "package": "rollup -c && npm publish",
+    "build-storybook": "storybook build"
   },
   "type": "module"
 }
