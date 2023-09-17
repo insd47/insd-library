@@ -11,4 +11,5 @@ export interface TabListProps extends HTMLAttributes<HTMLDivElement> {
 
 export interface TabProps extends HTMLAttributes<HTMLDivElement> {
   isActive?: boolean;
+  stretch?: boolean;
 }

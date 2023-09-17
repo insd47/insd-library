@@ -41,6 +41,7 @@ export const TabList: React.FC<PropsWithChildren<TabListProps>> = ({
         .map((child, i) =>
           cloneElement(child as ReactElement<TabProps>, {
             isActive: index === i,
+            stretch,
             onClick: () => onIndexChange && onIndexChange(i),
           })
         )}

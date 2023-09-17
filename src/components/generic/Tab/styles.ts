@@ -40,6 +40,7 @@ export const StyledTabList = styled(OverlayScrollbarsComponent)<{
 
 export const StyledTab = styled.div<{
   isActive?: boolean;
+  stretch?: boolean;
 }>`
   cursor: pointer;
   position: relative;
@@ -51,6 +52,7 @@ export const StyledTab = styled.div<{
   padding: 0 16px;
   color: ${({ theme }) => theme.colors.text.passive[1] + ""};
   transition: color 0.15s;
+  ${({ stretch }) => stretch && "flex: 1;"}
 
   &:before {
     z-index: -1;
