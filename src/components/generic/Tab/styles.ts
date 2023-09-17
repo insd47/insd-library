@@ -10,9 +10,9 @@ export const StyledTabList = styled(OverlayScrollbarsComponent)<{
   height?: CSSProperties["height"];
 }>`
   box-sizing: border-box;
-  width: 100%;
   min-height: 32px;
   display: flex;
+  white-space: nowrap;
 
   .os-scrollbar {
     --os-padding-perpendicular: 0;
@@ -48,7 +48,7 @@ export const StyledTab = styled.div<{
   flex: 1;
   align-items: center;
   justify-content: center;
-  padding: 0 20px;
+  padding: 0 16px;
   color: ${({ theme }) => theme.colors.text.passive[1] + ""};
   transition: color 0.15s;
 

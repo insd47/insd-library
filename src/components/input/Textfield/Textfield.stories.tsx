@@ -33,8 +33,8 @@ export const Small: Story = {
 export const Label = {
   args: {
     label: "이메일 주소",
-    type: "email",
-    icon: "email",
+    type: "mail",
+    icon: "mail",
     placeholder: "so@example.com",
     assistive: "최소 8자 이상 입력해주세요.",
   },

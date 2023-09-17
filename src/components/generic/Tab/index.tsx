@@ -17,11 +17,25 @@ export const TabList: React.FC<PropsWithChildren<TabListProps>> = ({
   index,
   onIndexChange,
   children,
-  padding = "0 24px",
+  padding = "0 16px",
   ...props
 }) => {
   return (
-    <StyledTabList padding={padding} {...props}>
+    <StyledTabList
+      padding={padding}
+      options={{
+        overflow: {
+          x: "scroll",
+          y: "hidden",
+        },
+        scrollbars: {
+          autoHide: "leave",
+          autoHideDelay: 500,
+        },
+      }}
+      defer
+      {...props}
+    >
       {Children.toArray(children)
         .filter((child) => isValidElement(child) && child.type === Tab)
         .map((child, i) =>
