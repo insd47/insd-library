@@ -30,14 +30,15 @@ yarn storybook
 - Disabler
 - Icon
 - Loading
-- Switch
 - Pressable
 - Textfield
+- Tab
+- Boolean (Radio + Checkbox)
 
 ## 제작 중인 컴포넌트
 
+- Switch
 - Sheet
-- Boolean (Radio + Checkbox)
 - Dropdown
 - Number
 - Slider
