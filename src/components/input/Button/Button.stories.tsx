@@ -25,6 +25,7 @@ export const Filled: Story = {
   args: {
     type: "filled",
     size: "medium",
+    onClick: () => console.log("Clicked!"),
   },
 };
 
@@ -37,7 +38,7 @@ export const Warn: Story = {
 
 export const Loading: Story = {
   args: {
-    type: "linear",
+    type: "filled",
     size: "medium",
     loading: true,
   },

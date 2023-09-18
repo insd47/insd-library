@@ -14,7 +14,6 @@ const Icon = forwardRef<HTMLSpanElement, PropsWithChildren<IconProps>>(
       children,
       type = "link",
       pressable,
-      action,
       size = 24,
       buttonSize,
       margin,
@@ -38,8 +37,8 @@ const Icon = forwardRef<HTMLSpanElement, PropsWithChildren<IconProps>>(
       <StyledIconButton
         {...pointerEvents}
         {...pointerValues}
+        disabled={disabled}
         size={buttonSize ?? Math.floor(size * 1.5)}
-        onClick={action ? () => action() : undefined}
       >
         <StyledIcon ref={ref} size={size} CSSValues={CSSValues} {...props}>
           {iconTypes[type]}

@@ -11,7 +11,6 @@ export interface IconProps extends CommonProps {
   right?: CSSProperties["marginRight"];
   disabled?: boolean;
   pressable?: boolean;
-  action?: () => void;
   size?: number;
   buttonSize?: number;
 }

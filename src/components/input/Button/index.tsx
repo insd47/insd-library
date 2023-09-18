@@ -12,6 +12,8 @@ import type { ButtonProps } from "./types";
 
 import { Icon, Loading } from "../../generic";
 import { usePointerEvents } from "../../../tools";
+import { useTheme } from "@emotion/react";
+import { InsdColor } from "../../../theme/colors";
 
 const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(
   (
@@ -58,6 +60,7 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(
     );
 
     const { pointerEvents, pointerValues } = usePointerEvents();
+    const { colors } = useTheme();
 
     useEffect(() => {
       if (loading === false) {
@@ -90,6 +93,13 @@ const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(
         {hasLoading && (
           <Loading
             size="small"
+            type={
+              type === "filled"
+                ? "reverse"
+                : type === "warn"
+                ? "white"
+                : "default"
+            }
             style={{
               opacity: loading ? 1 : 0,
               position: "absolute",

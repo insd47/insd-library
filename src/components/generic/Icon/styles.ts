@@ -19,6 +19,11 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
   background-color: transparent;
   transition: background-color 0.1s;
 
+  &[disabled] {
+    cursor: not-allowed;
+    background-color: transparent !important;
+  }
+
   ${({ theme, isHover, isPressed }) =>
     isHover &&
     {

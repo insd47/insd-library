@@ -37,11 +37,12 @@ const Boolean = forwardRef<HTMLLabelElement, PropsWithChildren<BooleanProps>>(
         type={type}
         reverse={labelDirection === "left"}
         className={className}
+        disabled={disabled}
         style={style}
         {...pointerEvents}
         {...pointerValues}
       >
-        <input type={type} {...props} />
+        <input disabled={disabled} type={type} {...props} />
         <div>{type === "checkbox" ? <Icon /> : <div />}</div>
         {children}
       </StyledBoolean>

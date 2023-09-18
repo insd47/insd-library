@@ -70,12 +70,13 @@ const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
           {rightIconButton && (
             <Icon
               size={16}
+              disabled={disabled}
               buttonSize={size === "medium" ? 32 : 24}
               type={rightIconButton}
               style={{
                 marginRight: "-3px",
               }}
-              action={rightIconAction}
+              onClick={rightIconAction}
               pressable
             />
           )}

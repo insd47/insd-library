@@ -1,9 +1,11 @@
+import { InsdColor } from "@/src/theme/colors";
 import { CSSProperties, HTMLAttributes } from "react";
 
 export type LoadingSize = "big" | "medium" | "small";
 
-interface CommonProps extends HTMLAttributes<HTMLSpanElement> {
+interface CommonProps extends Omit<HTMLAttributes<HTMLSpanElement>, "color"> {
   size?: LoadingSize;
+  type?: "default" | "reverse" | "white";
 }
 
 export interface LoadingProps extends CommonProps {
@@ -14,4 +16,5 @@ export interface LoadingProps extends CommonProps {
 
 export interface StyledLoadingProps extends CommonProps {
   CSSValues?: CSSProperties;
+  loadingColor?: InsdColor;
 }

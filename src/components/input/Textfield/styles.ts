@@ -35,7 +35,7 @@ export const StyledTextfield = styled.div<StyledTextfieldProps>`
   ${({ rightIconButton }) => (rightIconButton ? "padding-right: 5px;" : "")}
   box-sizing: border-box;
   border-radius: 12px;
-  transition: border-color 0.2s;
+  transition: opacity 0.2s, border-color 0.2s;
   font-family: var(--font-main), sans-serif;
   width: 100%;
 
@@ -49,15 +49,7 @@ export const StyledTextfield = styled.div<StyledTextfieldProps>`
 
   align-items: center;
 
-  &[disabled] {
-    cursor: not-allowed;
-    ${({ theme }) => `
-    border: 1px dashed ${theme.colors.box.border[2]};
-    color: ${theme.colors.text.passive[1]};
-    background-color: ${theme.colors.box.foreground[3]};
-    pointer-events: none;
-    `}
-  }
+  ${({ disabled }) => disabled && `cursor: not allowed;`}
 
   ${({ theme }) => ({
     border: `1px solid ${theme.colors.box.border[2]}`,
@@ -91,13 +83,22 @@ export const StyledTextfield = styled.div<StyledTextfieldProps>`
     line-height: 18px;
     border: 0;
     padding: 12px 0;
+    color: ${({ theme }) => theme.colors.text.main + ""};
+    transition: opacity 0.2s;
+
+    &[disabled] {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
 
     &::placeholder {
+      transition: color 0.2s;
       color: ${({ theme }) => theme.colors.text.passive[1] + ""};
     }
   }
 
   & > button {
     z-index: 1;
+    transition: color 0.2s;
   }
 `;

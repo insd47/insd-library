@@ -7,6 +7,7 @@ const StyledBoolean = styled.label<{
   CSSValues?: CSSProperties;
   isHover?: boolean;
   isPressed?: boolean;
+  disabled?: boolean;
 }>`
   display: inline-flex;
   cursor: pointer;
@@ -15,12 +16,14 @@ const StyledBoolean = styled.label<{
   font-size: 14px;
   line-height: 18px;
   font-family: var(--font-main), sans-serif;
+  transition: opacity 0.1s;
 
   ${({ reverse }) => (reverse ? "flex-direction: row-reverse;" : "")}
 
-  &[disabled] {
-    cursor: not-allowed;
-  }
+  ${({ disabled }) =>
+    disabled &&
+    `cursor: not-allowed;
+    opacity: 0.5;`}
 
   & > input {
     display: none;
@@ -70,7 +73,8 @@ const StyledBoolean = styled.label<{
       transition: background-color 0.1s;
     }
 
-    ${({ isHover, theme }) =>
+    ${({ disabled, isHover, theme }) =>
+      !disabled &&
       isHover &&
       `border-color: ${theme.colors.text.passive[2]};
 

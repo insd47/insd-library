@@ -4,17 +4,21 @@ import { StyledLoadingProps } from "./types";
 const StyledLoading = styled.span<StyledLoadingProps>`
   display: inline-flex;
 
-  ${({ theme }) => `@keyframes LoadingAnimation {
+  @keyframes LoadingAnimation {
     0% {
-      background-color: ${theme.colors.text.passive[3]};
+      background-color: var(--loading-dark);
     }
     50% {
-      background-color: ${theme.colors.text.passive[1]};
+      background-color: var(--loading-light);
     }
     100% {
-      background-color: ${theme.colors.text.passive[3]};
+      background-color: var(--loading-dark);
     }
-  }`}
+  }
+
+  & > span {
+    background-color: var(--loading-dark);
+  }
 
   & span:nth-of-type(4) {
     display: none;
@@ -22,19 +26,16 @@ const StyledLoading = styled.span<StyledLoadingProps>`
 
   & span {
     border-radius: 50%;
-    animation-delay: 200ms;
-    ${({ theme }) => `
-      background-color: ${theme.colors.text.passive[3]};
-      animation: LoadingAnimation 1.4s ease-in-out infinite;
-    `};
+    animation-delay: 100ms;
+    animation: LoadingAnimation 1.2s ease-in-out infinite;
   }
 
   & span:nth-of-type(2) {
-    animation-delay: 400ms;
+    animation-delay: 200ms;
   }
 
   & span:nth-of-type(3) {
-    animation-delay: 600ms;
+    animation-delay: 300ms;
   }
 
   ${({ size }) =>
