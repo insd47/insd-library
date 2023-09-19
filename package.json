@@ -1,6 +1,13 @@
 {
   "name": "@insd47/library",
-  "version": "0.2.10-alpha",
+  "version": "0.2.11-alpha",
+  "author": {
+    "name": "insd47",
+    "email": "me@insd.dev",
+    "url": "https://insd.dev"
+  },
+  "repository": "https://github.com/insd47/library",
+  "description": "A UI Library for React",
   "devDependencies": {
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
@@ -66,7 +73,7 @@
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "rollup -c",
-    "package": "rollup -c && npm publish",
+    "package": "rollup -c && npm publish --access public",
     "build-storybook": "storybook build"
   },
   "type": "module"
