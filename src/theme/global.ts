@@ -142,9 +142,21 @@ const global = (theme: Theme) => css`
   body {
     margin: 0;
     padding: 0;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
-  #storybook-docs {
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  ∂ #storybook-docs {
     height: 100%;
     overflow-y: auto;
   }

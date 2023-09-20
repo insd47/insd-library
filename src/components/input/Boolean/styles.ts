@@ -49,7 +49,6 @@ const StyledBoolean = styled.label<{
     display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
     width: 18px;
     height: 18px;
     flex-shrink: 0;

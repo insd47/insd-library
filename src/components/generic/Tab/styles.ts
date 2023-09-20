@@ -9,7 +9,6 @@ export const StyledTabList = styled(OverlayScrollbarsComponent)<{
   padding?: CSSProperties["padding"];
   height?: CSSProperties["height"];
 }>`
-  box-sizing: border-box;
   min-height: 32px;
   display: flex;
   white-space: nowrap;

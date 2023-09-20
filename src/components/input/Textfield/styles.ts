@@ -18,7 +18,6 @@ export const StyledTextfieldLabel = styled.p<StyledTextfieldLabelProps>`
   padding: 0 12px;
   font-size: 12px;
   line-height: 16px;
-  margin: 0;
   font-family: var(--font-main), sans-serif;
 
   color: ${({ theme, error }) =>
@@ -33,7 +32,6 @@ export const StyledTextfield = styled.div<StyledTextfieldProps>`
   column-gap: 6px;
   padding: 0 12px;
   ${({ rightIconButton }) => (rightIconButton ? "padding-right: 5px;" : "")}
-  box-sizing: border-box;
   border-radius: 12px;
   transition: opacity 0.2s, border-color 0.2s;
   font-family: var(--font-main), sans-serif;

@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import { StyledBoxProps } from "./types";
 
 const StyledBox = styled.div<StyledBoxProps>`
-  box-sizing: border-box;
   border: 1px solid transparent;
 
   ${({ theme, background }) => {
