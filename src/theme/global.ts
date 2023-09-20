@@ -156,7 +156,8 @@ const global = (theme: Theme) => css`
     color: inherit;
     text-decoration: none;
   }
-  ∂ #storybook-docs {
+
+  #storybook-docs {
     height: 100%;
     overflow-y: auto;
   }
