@@ -9,7 +9,6 @@ const StyledButton = styled.button<StyledButtonProps>`
   outline: 0;
   border-radius: 8px;
   border: 1px solid transparent;
-  cursor: pointer;
   transition: opacity 0.2s, background-color 0.1s, color 0.1s, border-color 0.1s, opacity 0.1s, transform 0.1s;
   overflow: hidden;
   display: flex;

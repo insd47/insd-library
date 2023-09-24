@@ -8,7 +8,6 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
   color: inherit;
   border: 0;
   line-height: 1;
-  cursor: pointer;
   border-radius: ${({ size }) => Math.floor(size / 4)}px;
 
   display: flex;

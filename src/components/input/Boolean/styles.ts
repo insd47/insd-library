@@ -10,7 +10,6 @@ const StyledBoolean = styled.label<{
   disabled?: boolean;
 }>`
   display: inline-flex;
-  cursor: pointer;
   column-gap: 8px;
   align-items: center;
   font-size: 14px;
