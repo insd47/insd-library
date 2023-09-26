@@ -33,6 +33,8 @@ const global = (theme: Theme) => css`
     --color-box-border-1: ${theme.colors.box.border[1] + ""};
     --color-box-border-2: ${theme.colors.box.border[2] + ""};
     --color-box-border-3: ${theme.colors.box.border[3] + ""};
+    --color-box-shadow-1: ${theme.colors.box.shadow[1] + ""};
+    --color-box-shadow-2: ${theme.colors.box.shadow[2] + ""};
     --color-secondary-red: ${theme.colors.secondary.red + ""};
     --color-secondary-green: ${theme.colors.secondary.green + ""};
     --color-secondary-blue: ${theme.colors.secondary.blue + ""};
