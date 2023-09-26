@@ -52,7 +52,7 @@ export const StyledTextfield = styled.div<StyledTextfieldProps>`
   ${({ theme }) => ({
     border: `1px solid ${theme.colors.box.border[2]}`,
     color: theme.colors.text.main + "",
-    backgroundColor: theme.colors.box.foreground[3] + "",
+    backgroundColor: theme.colors.box.background + "",
   })}
 
   ${({ isHover, theme }) => ({

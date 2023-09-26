@@ -117,8 +117,8 @@ export const colors = {
       main: absolute.light.gray,
       passive: {
         1: absolute.light.gray.elevation(60),
-        2: absolute.light.gray.elevation(45),
-        3: absolute.light.gray.elevation(30),
+        2: absolute.light.gray.elevation(40),
+        3: absolute.light.gray.elevation(25),
       },
     },
     box: {
@@ -135,9 +135,9 @@ export const colors = {
         3: absolute.light.gray.alpha(2),
       },
       border: {
-        1: absolute.light.gray.elevation(20),
-        2: absolute.light.gray.elevation(15),
-        3: absolute.light.gray.elevation(10),
+        1: absolute.light.gray.elevation(15),
+        2: absolute.light.gray.elevation(10),
+        3: absolute.light.gray.elevation(5),
       },
       shadow: {
         1: new InsdColor(0, 0, 0, "light", { alpha: 20 }),

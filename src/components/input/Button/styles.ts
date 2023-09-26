@@ -22,7 +22,8 @@ const StyledButton = styled.button<StyledButtonProps>`
   flex-grow: 0;
 
   &[disabled] {
-    opacity: 0.5;
+    opacity: ${({ theme, buttonType }) =>
+      theme.mode === "light" && buttonType === "filled" ? 0.2 : 0.5};
     cursor: not-allowed;
     transform: none !important;
   }
