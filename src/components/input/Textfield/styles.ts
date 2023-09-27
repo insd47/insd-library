@@ -15,7 +15,7 @@ export const StyledTextfieldContainer = styled.div<StyledTextfieldContainerProps
 `;
 
 export const StyledTextfieldLabel = styled.p<StyledTextfieldLabelProps>`
-  padding: 0 12px;
+  padding: 0 6px;
   font-size: 12px;
   line-height: 16px;
   font-family: var(--font-main), sans-serif;

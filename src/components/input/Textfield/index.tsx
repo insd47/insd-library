@@ -48,7 +48,9 @@ const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
         style={style}
         stretch={stretch}
       >
-        {label && <StyledTextfieldLabel>{label}</StyledTextfieldLabel>}
+        {label && (
+          <StyledTextfieldLabel error={!!error}>{label}</StyledTextfieldLabel>
+        )}
         <StyledTextfield
           ref={ref}
           CSSValues={CSSValues}
@@ -81,8 +83,8 @@ const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
             />
           )}
         </StyledTextfield>
-        {(assistive || error) && (
-          <StyledTextfieldLabel error={error !== undefined}>
+        {assistive && error && (
+          <StyledTextfieldLabel error={!!error}>
             {error || assistive}
           </StyledTextfieldLabel>
         )}

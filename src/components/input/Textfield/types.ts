@@ -14,7 +14,7 @@ export interface TextfieldProps
   rightIconAction?: () => void;
   label?: string;
   assistive?: string;
-  error?: string;
+  error?: string | boolean;
   placeholder?: string;
   type?: HTMLInputElement["type"];
   value?: string;
