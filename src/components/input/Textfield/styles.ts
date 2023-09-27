@@ -19,6 +19,7 @@ export const StyledTextfieldLabel = styled.p<StyledTextfieldLabelProps>`
   font-size: 12px;
   line-height: 16px;
   font-family: var(--font-main), sans-serif;
+  transition: color 0.2s;
 
   color: ${({ theme, error }) =>
     error
