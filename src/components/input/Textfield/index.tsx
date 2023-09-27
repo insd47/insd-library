@@ -55,7 +55,7 @@ const Textfield = forwardRef<HTMLInputElement, TextfieldProps>(
           ref={ref}
           CSSValues={CSSValues}
           disabled={disabled}
-          error={error !== undefined}
+          error={!!error}
           size={size}
           rightIconButton={rightIconButton !== undefined}
           {...pointerEvents}
