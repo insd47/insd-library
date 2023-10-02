@@ -34,6 +34,7 @@ yarn storybook
 - Textfield
 - Tab
 - Boolean (Radio + Checkbox)
+- Tooltip (Story 없음)
 
 ## 제작 중인 컴포넌트
 
