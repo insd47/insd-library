@@ -47,6 +47,7 @@ export const StyledTooltip = styled.span<StyledTooltipProps>`
     font-size: 14px;
     line-height: 18px;
     font-weight: 400;
+    box-shadow: 0 8px 20px 0 ${({ theme }) => theme.colors.box.shadow[2] + ""};
 
     ${({ isVisible, position }) => {
       const translate = {
