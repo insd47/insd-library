@@ -53,8 +53,8 @@ export const StyledTooltip = styled.span<StyledTooltipProps>`
       const translate = {
         top: "translateY(100%)",
         bottom: "translateY(-100%)",
-        left: "translateX(100%)",
-        right: "translateX(-100%)",
+        left: "translateX(40px)",
+        right: "translateX(-40px)",
       };
 
       return isVisible
