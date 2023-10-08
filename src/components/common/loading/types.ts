@@ -1,4 +1,4 @@
-import { InsdColor } from "@/src/theme/colors";
+import { InsdColor } from "@/theme/colors";
 import { CSSProperties, HTMLAttributes } from "react";
 
 export type LoadingSize = "big" | "medium" | "small";

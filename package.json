@@ -1,11 +1,13 @@
 {
   "name": "@insd47/library",
-  "version": "0.3.3-alpha",
+  "version": "0.4.1-alpha",
   "author": {
     "name": "insd47",
     "email": "me@insd.dev",
     "url": "https://insd.dev"
   },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/insd47/library",
   "description": "A UI Library for React",
   "devDependencies": {
@@ -54,20 +56,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^5.1.6"
-  },
-  "exports": {
-    "./theme": {
-      "import": "./dist/theme/index.js",
-      "types": "./dist/theme/index.d.ts"
-    },
-    "./generic": {
-      "import": "./dist/components/generic/index.js",
-      "types": "./dist/components/generic/index.d.ts"
-    },
-    "./input": {
-      "import": "./dist/components/input/index.js",
-      "types": "./dist/components/input/index.d.ts"
-    }
   },
   "license": "MIT",
   "scripts": {

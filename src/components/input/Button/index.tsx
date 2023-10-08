@@ -10,10 +10,12 @@ import React, {
 import StyledButton from "./styles";
 import type { ButtonProps } from "./types";
 
-import { Icon, Loading } from "../../generic";
 import { usePointerEvents } from "../../../tools";
 import { useTheme } from "@emotion/react";
 import { InsdColor } from "../../../theme/colors";
+
+import Icon from "@/components/common/icon";
+import Loading from "@/components/common/loading";
 
 const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(
   (

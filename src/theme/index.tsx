@@ -15,14 +15,6 @@ import global from "./global";
 
 import type { Theme, ThemeMode, UserThemeMode } from "./types";
 
-export type {
-  CSSColor,
-  ColorWithOpacity,
-  ThemeMode,
-  UserThemeMode,
-  Theme,
-} from "./types";
-
 const THEME_MODE = "theme-mode";
 
 const ThemeProvider = ({ children }: PropsWithChildren) => {

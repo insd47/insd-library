@@ -8,17 +8,17 @@ import url from "@rollup/plugin-url";
 
 const extensions = [".js", ".jsx", ".ts", ".tsx", ".mjs"];
 
-const sources = [
-  "src/components/generic/index.ts",
-  "src/components/input/index.ts",
-  "src/theme/index.tsx",
-];
+const sources = ["src/index.ts"];
 
 const config = sources.map((source) => ({
   external: [/node_modules/],
   input: source,
   treeshake: {
     moduleSideEffects: ["**/*.styles.ts"],
+  },
+  onwarn: (warning, warn) => {
+    if (warning.code === "MODULE_LEVEL_DIRECTIVE") return;
+    warn(warning);
   },
   output: [
     {
