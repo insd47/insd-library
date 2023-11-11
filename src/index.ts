@@ -5,10 +5,13 @@ export { default as Disabler } from "./components/common/disabler";
 export { default as Box } from "./components/common/box";
 export { TabList, Tab } from "./components/common/tab";
 export { default as Tooltip } from "./components/common/tooltip";
+export { default as ContextMenu } from "./components/common/context-menu";
+export { default as LazyMount } from "./components/common/lazy-mount";
 
 // types-common
 export type { IconType } from "./components/common/icon/fonts/types";
 export type { LoadingSize } from "./components/common/loading/types";
+export type { ContextMenuItem } from "./components/common/context-menu/types";
 
 // input
 export { default as Button } from "./components/input/button";
