@@ -204,7 +204,10 @@ const ParentItemContainer: React.FC<{
 
   const childRef = useRef<HTMLUListElement>(null);
   const iconRef = useRef<HTMLSpanElement>(null);
-  const mousePos = useRef({ x: 0, y: 0 });
+  const mousePos = useRef<{
+    x?: number | undefined;
+    y?: number | undefined;
+  }>({});
 
   useEffect(() => {
     if (!childRef.current) return;
@@ -214,7 +217,7 @@ const ParentItemContainer: React.FC<{
     if (!item) return;
 
     const listener = (e: PointerEvent) => {
-      const checkState = () => {
+      const checkState = (prevX: number, prevY: number) => {
         if (!childRef.current) return false;
         const { x, y } = e;
 
@@ -222,7 +225,6 @@ const ParentItemContainer: React.FC<{
         if (item.contains(e.target as HTMLElement)) return true;
         if (childRef.current.contains(e.target as HTMLElement)) return true;
 
-        const { x: prevX, y: prevY } = mousePos.current;
         let {
           x: boxX,
           width: boxWidth,
@@ -252,7 +254,9 @@ const ParentItemContainer: React.FC<{
       };
 
       requestAnimationFrame(() => {
-        setIsHover(checkState());
+        const { x, y } = mousePos.current;
+        if (x && y) setIsHover(checkState(x, y));
+        mousePos.current = { x: e.x, y: e.y };
         e.preventDefault();
       });
     };
