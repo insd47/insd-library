@@ -213,13 +213,13 @@ const ParentItemContainer: React.FC<{
     const item = iconRef.current?.parentElement as HTMLLIElement;
     if (!item) return;
 
-    window.addEventListener("pointermove", (e) => {
+    const listener = (e: PointerEvent) => {
       const checkState = () => {
         if (!childRef.current) return false;
         const { x, y } = e;
 
         // check is inside
-        if (!item.contains(e.target as HTMLElement)) return true;
+        if (item.contains(e.target as HTMLElement)) return true;
         if (childRef.current.contains(e.target as HTMLElement)) return true;
 
         const { x: prevX, y: prevY } = mousePos.current;
@@ -234,6 +234,15 @@ const ParentItemContainer: React.FC<{
         if (isLeft) boxX += boxWidth;
 
         // check is inside safe triangle
+        console.log(
+          "is inside safe triangle:",
+          isPointInTriangle(
+            [x, y],
+            [prevX, prevY],
+            [boxX, boxY],
+            [boxX, boxY + boxHeight]
+          )
+        );
         return isPointInTriangle(
           [x, y],
           [prevX, prevY],
@@ -245,7 +254,9 @@ const ParentItemContainer: React.FC<{
       requestAnimationFrame(() => {
         setIsHover(checkState());
       });
-    });
+    };
+
+    window.addEventListener("pointermove", listener);
 
     const { innerWidth } = window;
     const { width } = childRef.current?.getBoundingClientRect();
@@ -258,7 +269,9 @@ const ParentItemContainer: React.FC<{
     }
 
     // cleanup
-    return () => {};
+    return () => {
+      window.removeEventListener("pointermove", listener);
+    };
   }, [isParentVisible]);
 
   useEffect(() => {
