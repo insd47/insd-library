@@ -253,6 +253,7 @@ const ParentItemContainer: React.FC<{
 
       requestAnimationFrame(() => {
         setIsHover(checkState());
+        e.preventDefault();
       });
     };
 
