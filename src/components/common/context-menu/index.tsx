@@ -26,6 +26,7 @@ import { createPortal } from "react-dom";
 import LazyMount from "../lazy-mount";
 import CheckIcon from "@/components/input/boolean/icon";
 import { useLayer } from "@/tools";
+import isPointInTriangle from "./check";
 
 const LAYER_INDEX = 201;
 const RENDER_DELAY = 10;
@@ -74,9 +75,13 @@ const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
 
     // check click outside
     const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (contextRef.current && !contextRef.current.contains(target)) {
-        onClose?.();
+      const { target } = e;
+
+      const layer = document.getElementById(LAYER_NAME);
+      if (!layer) return;
+
+      for (const node of layer.childNodes) {
+        if (node.contains(target as Node)) return;
       }
     };
 
@@ -195,13 +200,11 @@ const ParentItemContainer: React.FC<{
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
 
-  const [hoverState, setHoverState] = useState({
-    item: false,
-    child: false,
-  });
+  const [isHover, setIsHover] = useState(false);
 
   const childRef = useRef<HTMLUListElement>(null);
   const iconRef = useRef<HTMLSpanElement>(null);
+  const mousePos = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     if (!childRef.current) return;
@@ -210,20 +213,38 @@ const ParentItemContainer: React.FC<{
     const item = iconRef.current?.parentElement as HTMLLIElement;
     if (!item) return;
 
-    item.addEventListener("pointerenter", () => {
-      setHoverState((prev) => ({ ...prev, item: true }));
-    });
+    window.addEventListener("pointermove", (e) => {
+      const checkState = () => {
+        if (!childRef.current) return false;
+        const { x, y } = e;
 
-    item.addEventListener("pointerleave", () => {
-      setHoverState((prev) => ({ ...prev, item: false }));
-    });
+        // check is inside
+        if (!item.contains(e.target as HTMLElement)) return true;
+        if (childRef.current.contains(e.target as HTMLElement)) return true;
 
-    childRef.current.addEventListener("pointerenter", () => {
-      setHoverState((prev) => ({ ...prev, child: true }));
-    });
+        const { x: prevX, y: prevY } = mousePos.current;
+        let {
+          x: boxX,
+          width: boxWidth,
+          y: boxY,
+          height: boxHeight,
+        } = childRef.current.getBoundingClientRect();
 
-    childRef.current.addEventListener("pointerleave", () => {
-      setHoverState((prev) => ({ ...prev, child: false }));
+        const isLeft = item.getBoundingClientRect().x > x;
+        if (isLeft) boxX += boxWidth;
+
+        // check is inside safe triangle
+        return isPointInTriangle(
+          [x, y],
+          [prevX, prevY],
+          [boxX, boxY],
+          [boxX, boxY + boxHeight]
+        );
+      };
+
+      requestAnimationFrame(() => {
+        setIsHover(checkState());
+      });
     });
 
     const { innerWidth } = window;
@@ -237,32 +258,19 @@ const ParentItemContainer: React.FC<{
     }
 
     // cleanup
-    return () => {
-      item.removeEventListener("pointerenter", () => {
-        setHoverState((prev) => ({ ...prev, item: true }));
-      });
-      item.removeEventListener("pointerleave", () => {
-        setHoverState((prev) => ({ ...prev, item: false }));
-      });
-      childRef.current?.removeEventListener("pointerenter", () => {
-        setHoverState((prev) => ({ ...prev, child: true }));
-      });
-      childRef.current?.removeEventListener("pointerleave", () => {
-        setHoverState((prev) => ({ ...prev, child: false }));
-      });
-    };
+    return () => {};
   }, [isParentVisible]);
 
   useEffect(() => {
     const item = iconRef.current?.parentElement as HTMLLIElement;
-    if (hoverState.item || hoverState.child) {
+    if (isHover) {
       setIsVisible(true);
       item.setAttribute("data-hover", "true");
     } else {
       setIsVisible(false);
       item.removeAttribute("data-hover");
     }
-  }, [hoverState]);
+  }, [isHover]);
 
   return (
     <>
