@@ -26,12 +26,6 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
   useLayoutEffect(() => {
     const body = document.querySelector("body");
 
-    if (!document.getElementById("_sheet")) {
-      const sheetContainer = document.createElement("div");
-      sheetContainer.id = "_sheet";
-      body?.appendChild(sheetContainer);
-    }
-
     if (window.matchMedia) {
       window.matchMedia("(prefers-reduced-motion)").matches &&
         body?.setAttribute("data-reduce", "true");
@@ -100,7 +94,7 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
       setUserMode(userMode);
       localStorage.setItem(THEME_MODE, userMode);
     },
-    [mode]
+    [mode, userMode]
   );
 
   const variables = {
