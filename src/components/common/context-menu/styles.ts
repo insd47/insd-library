@@ -104,19 +104,24 @@ export const StyledItem = styled.li<StyledItemProps>`
 
   & > ul {
     opacity: 0;
-    transition: opacity 0.15s;
+    transition: opacity 0.1s;
     pointer-events: none;
   }
 
-  &:hover,
-  &[data-hover="true"] {
-    &:before {
-      background-color: ${({ theme }) => theme.colors.box.filled[1] + ""};
-    }
+  &:not([data-triangle="true"]):hover,
+  &:not([data-triangle="true"])[data-hover="true"],
+  &[data-triangle-handler="true"][data-hover="true"] {
+    ${({ type, theme }) =>
+      type !== "content" &&
+      `&:before {
+      background-color: ${theme.colors.box.filled[1] + ""};
+    }`}
 
     & > ul {
       opacity: 1;
       pointer-events: all;
+      transition: opacity 0s;
+      transition-delay: 0.2s;
     }
   }
 `;

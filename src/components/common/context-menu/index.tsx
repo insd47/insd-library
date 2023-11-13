@@ -23,9 +23,12 @@ import {
 } from "./constants";
 import { createItems } from "./components";
 
+import { TriangleContext } from "./check";
+
 const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
   ({ items, x: initialX, y: initialY, onClose, open, ...props }, ref) => {
     const [pos, setPos] = useState({ x: initialX, y: initialY });
+    const [isTriangle, setIsTriangle] = useState(false);
 
     const contextRef = useRef<HTMLUListElement>(null);
     useImperativeHandle(ref, () => contextRef.current as HTMLUListElement);
@@ -49,15 +52,9 @@ const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
     // check click outside
     const handleClickOutside = (e: MouseEvent) => {
       const { target } = e;
+      const node = contextRef.current;
 
-      const layer = document.getElementById(LAYER_NAME);
-      if (!layer) return;
-
-      for (const node of layer.childNodes) {
-        if (node.contains(target as Node)) return;
-      }
-
-      onClose?.();
+      if (node && !node.contains(target as Node)) onClose?.();
     };
 
     // check window blur
@@ -69,22 +66,24 @@ const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
       window.addEventListener("blur", handleWindowBlur);
 
       return () => {
-        window.removeEventListener("blur", handleWindowBlur);
+        window.removeEventListener("resize", () => onClose?.());
       };
     }, []);
 
     const layer = document.getElementById(LAYER_NAME);
     const elementBuilder = (visible: boolean) => (
-      <StyledContextMenu
-        type="context-menu"
-        {...pos}
-        ref={contextRef}
-        open={visible}
-        onClick={() => onClose?.()}
-        {...props}
-      >
-        {createItems(items)}
-      </StyledContextMenu>
+      <TriangleContext.Provider value={[isTriangle, setIsTriangle]}>
+        <StyledContextMenu
+          type="context-menu"
+          {...pos}
+          ref={contextRef}
+          open={visible}
+          onClick={() => onClose?.()}
+          {...props}
+        >
+          {createItems(items, visible)}
+        </StyledContextMenu>
+      </TriangleContext.Provider>
     );
 
     return hasLayer && layer
@@ -100,8 +99,8 @@ const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
               }
             }}
             onUnmount={() => {
-              console.log("UNMOUNTED");
               window.removeEventListener("click", handleClickOutside);
+              setIsTriangle(false);
             }}
             builder={elementBuilder}
           />,

@@ -1,4 +1,4 @@
-import type { IconType } from "@/.";
+import type { IconType } from "../icon/fonts/types";
 
 export type ItemType =
   | "seperator"
@@ -61,6 +61,7 @@ export interface StyledContextMenuProps {
 export interface SubMenuProps {
   items: ContextMenuItem[];
   isLeft: boolean;
+  isVisible: boolean;
   boundary: {
     x: number;
     y: number;

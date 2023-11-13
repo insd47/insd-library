@@ -37,7 +37,7 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
         body?.setAttribute("data-reduce", "true");
     }
 
-    const savedTheme = localStorage.getItem(THEME_MODE) as UserThemeMode;
+    const savedTheme = localStorage.getItem(THEME_MODE) as UserThemeMode | null;
     if (savedTheme) {
       setUserMode(savedTheme);
       setMode(getNewMode(savedTheme));
@@ -96,7 +96,7 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
         executeTransition();
         setMode(newMode);
         setUserMode(userMode);
-        localStorage.setItem("theme-mode", newMode);
+        localStorage.setItem(THEME_MODE, userMode);
       }
     },
     [mode]

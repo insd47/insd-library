@@ -1,3 +1,9 @@
+import { createContext } from "react";
+
+export const TriangleContext = createContext<
+  [boolean, React.Dispatch<React.SetStateAction<boolean>>]
+>([false, () => {}]);
+
 type Point = [number, number];
 type CrossPoint = [number, number, number, number];
 
@@ -15,8 +21,8 @@ export default function isPointInTriangle(
   let has_neg, has_pos;
 
   d1 = crossProduct(p[0] - a[0], p[1] - a[1], b[0] - a[0], b[1] - a[1]);
-  d2 = crossProduct(p[0] - b[0], p[1] - b[1], c[0] - b[0], c[0] - b[1]);
-  d3 = crossProduct(p[0] - c[0], p[1] - c[0], a[0] - c[0], a[1] - c[0]);
+  d2 = crossProduct(p[0] - b[0], p[1] - b[1], c[0] - b[0], c[1] - b[1]);
+  d3 = crossProduct(p[0] - c[0], p[1] - c[1], a[0] - c[0], a[1] - c[1]);
 
   has_neg = d1 < 0 || d2 < 0 || d3 < 0;
   has_pos = d1 > 0 || d2 > 0 || d3 > 0;
