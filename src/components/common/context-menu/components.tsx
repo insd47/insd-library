@@ -1,5 +1,4 @@
 import {
-  ActionItem,
   ContentItem,
   ContextMenuItem,
   DescriptionItem,
@@ -57,37 +56,46 @@ const SubMenuContainer: React.FC<SubMenuItem> = ({ items, ...props }) => {
   });
 
   useLayoutEffect(() => {
-    const subMenu = subMenuRef.current;
-    const item = itemRef.current;
+    const calculate = () => {
+      const subMenu = subMenuRef.current;
+      const item = itemRef.current;
 
-    if (subMenu && item) {
-      const itemRect = item.getBoundingClientRect();
-      const subMenuRect = subMenu.getBoundingClientRect();
+      if (subMenu && item) {
+        const itemRect = item.getBoundingClientRect();
+        const subMenuRect = subMenu.getBoundingClientRect();
 
-      const xOverflow = Math.min(
-        itemRect.x +
-          itemRect.width +
-          subMenuRect.width -
-          OVERLAP_WIDTH -
-          (window.innerWidth - MIN_PADDING),
-        0
-      );
+        const xOverflow = Math.min(
+          itemRect.x +
+            itemRect.width +
+            subMenuRect.width -
+            OVERLAP_WIDTH -
+            (window.innerWidth - MIN_PADDING),
+          0
+        );
 
-      const yOverflow = Math.max(
-        itemRect.y + subMenuRect.height - (window.innerHeight - MIN_PADDING),
-        0
-      );
+        const yOverflow = Math.max(
+          itemRect.y + subMenuRect.height - (window.innerHeight - MIN_PADDING),
+          0
+        );
 
-      setIsLeft(
-        xOverflow > 0 &&
-          itemRect.x - subMenuRect.width + OVERLAP_WIDTH > MIN_PADDING
-      );
+        setIsLeft(
+          xOverflow > 0 &&
+            itemRect.x - subMenuRect.width + OVERLAP_WIDTH > MIN_PADDING
+        );
 
-      setBoundary({
-        x: xOverflow,
-        y: yOverflow,
-      });
-    }
+        setBoundary({
+          x: xOverflow,
+          y: yOverflow,
+        });
+      }
+    };
+
+    calculate();
+    window.addEventListener("resize", calculate);
+
+    return () => {
+      window.removeEventListener("resize", calculate);
+    };
   }, []);
 
   return (
@@ -122,10 +130,10 @@ export const createItems = (items: ContextMenuItem[]) =>
   items.map((item, index) => {
     switch (item.type) {
       case "seperator":
-        return <StyledSeperator onClick={preventClose} key={index} />;
+        return <StyledSeperator key={index} onClick={preventClose} />;
       case "description":
         return (
-          <StyledDescription onClick={preventClose} key={index}>
+          <StyledDescription key={index} onClick={preventClose}>
             {(item as DescriptionItem).description}
           </StyledDescription>
         );
@@ -133,7 +141,11 @@ export const createItems = (items: ContextMenuItem[]) =>
         return <ContentItemFrame key={index} {...item} />;
       case "action":
         return (
-          <ContentItemFrame onClick={(e) => item.onClick?.(e)} {...item}>
+          <ContentItemFrame
+            key={index}
+            onClick={(e) => item.onClick?.(e)}
+            {...item}
+          >
             {item.checked && <CheckIcon />}
           </ContentItemFrame>
         );

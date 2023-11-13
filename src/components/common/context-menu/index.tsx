@@ -56,6 +56,8 @@ const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
       for (const node of layer.childNodes) {
         if (node.contains(target as Node)) return;
       }
+
+      onClose?.();
     };
 
     // check window blur

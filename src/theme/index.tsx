@@ -114,8 +114,8 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
 
   const theme: Theme = useMemo(
     () => ({
-      mode: mode,
-      system: userMode === "system",
+      mode,
+      userMode,
       colors: colors[mode],
       absolute: absolute[mode],
       variables,
