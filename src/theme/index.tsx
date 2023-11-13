@@ -95,7 +95,7 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
       if (newMode !== mode) {
         executeTransition();
         setMode(newMode);
-        setUserMode(newMode);
+        setUserMode(userMode);
         localStorage.setItem("theme-mode", newMode);
       }
     },
