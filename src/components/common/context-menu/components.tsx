@@ -4,7 +4,6 @@ import {
   ContextMenuItem,
   DescriptionItem,
   SubMenuItem,
-  SeperatorItem,
   SubMenuProps,
 } from "./types";
 import {
@@ -15,12 +14,10 @@ import {
 } from "./styles";
 import Icon from "../icon";
 import CheckIcon from "@/components/input/boolean/icon";
-import {
+import React, {
   PropsWithChildren,
-  ReactElement,
   forwardRef,
   useLayoutEffect,
-  useMemo,
   useRef,
   useState,
 } from "react";

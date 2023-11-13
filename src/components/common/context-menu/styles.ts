@@ -45,7 +45,9 @@ export const StyledContextMenu = styled.ul<
     const { boundary, isLeft } = props;
 
     return `
-      left: ${isLeft ? "-100%" : "calc(100% + ${boundary.x}px)"};
+      left: ${
+        isLeft ? "calc(-100% + 10px)" : `calc(100% + ${boundary.x - 10}px)`
+      };
       top: -${boundary.y}px;
     `;
   }}
