@@ -100,6 +100,7 @@ const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
               }
             }}
             onUnmount={() => {
+              console.log("UNMOUNTED");
               window.removeEventListener("click", handleClickOutside);
             }}
             builder={elementBuilder}
