@@ -4,7 +4,7 @@ export type ItemType =
   | "seperator"
   | "content"
   | "action"
-  | "parent"
+  | "submenu"
   | "description";
 
 export interface SeperatorItem {
@@ -26,9 +26,9 @@ export interface ActionItem extends Omit<ContentItem, "type"> {
   onClick?: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
 }
 
-export interface ParentItem extends Omit<ContentItem, "type"> {
-  type: "parent";
-  children: ContextMenuItem[];
+export interface SubMenuItem extends Omit<ContentItem, "type"> {
+  type: "submenu";
+  items: ContextMenuItem[];
 }
 
 export interface DescriptionItem {
@@ -40,7 +40,7 @@ export type ContextMenuItem =
   | SeperatorItem
   | ContentItem
   | ActionItem
-  | ParentItem
+  | SubMenuItem
   | DescriptionItem;
 
 export interface ContextMenuProps {
@@ -49,17 +49,33 @@ export interface ContextMenuProps {
   y: number;
   onClose?: () => void;
   open: boolean;
-  _childindex?: number;
 }
 
 export interface StyledContextMenuProps {
+  type: "context-menu";
   x: number;
   y: number;
-  childindex?: number;
   open: boolean;
+}
+
+export interface SubMenuProps {
+  items: ContextMenuItem[];
+  isLeft: boolean;
+  boundary: {
+    x: number;
+    y: number;
+  };
+}
+
+export interface StyledSubMenuProps {
+  type: "sub-menu";
+  isLeft: boolean;
+  boundary: {
+    x: number;
+    y: number;
+  };
 }
 
 export interface StyledItemProps {
   type: ItemType;
-  childindex?: number;
 }

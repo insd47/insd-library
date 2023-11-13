@@ -1,11 +1,14 @@
 import styled from "@emotion/styled";
-import { StyledContextMenuProps, StyledItemProps } from "./types";
+import {
+  StyledContextMenuProps,
+  StyledItemProps,
+  StyledSubMenuProps,
+} from "./types";
 
-export const StyledContextMenu = styled.ul<StyledContextMenuProps>`
+export const StyledContextMenu = styled.ul<
+  StyledContextMenuProps | StyledSubMenuProps
+>`
   position: absolute;
-
-  left: ${({ x }) => x + "px"};
-  top: ${({ y }) => y + "px"};
 
   background-color: ${({ theme }) => theme.colors.box.foreground[1] + ""};
   border: 1px solid ${({ theme }) => theme.colors.box.border[2] + ""};
@@ -21,10 +24,31 @@ export const StyledContextMenu = styled.ul<StyledContextMenuProps>`
 
   z-index: 100;
   pointer-events: all;
-  z-index: ${({ childindex }) => childindex};
 
-  ${({ open }) => !open && "transition: opacity 0.15s;"}
-  opacity: ${({ open }) => (open ? 1 : 0)};
+  ${({ type, ...props }) => {
+    if (type !== "context-menu") return;
+    if (!("open" in props)) return;
+
+    const { x, y, open } = props;
+
+    return `left: ${x + "px"};
+    top: ${y + "px"};
+  
+    ${!open && "transition: opacity 0.15s;"}
+    opacity: ${open ? 1 : 0};`;
+  }}
+
+  ${({ type, ...props }) => {
+    if (type !== "sub-menu") return;
+    if (!("boundary" in props)) return;
+
+    const { boundary, isLeft } = props;
+
+    return `
+      left: ${isLeft ? "-100%" : "calc(100% + ${boundary.x}px)"};
+      top: -${boundary.y}px;
+    `;
+  }}
 `;
 
 export const StyledSeperator = styled.li`
@@ -76,8 +100,21 @@ export const StyledItem = styled.li<StyledItemProps>`
     transition: background-color 0.08s;
   }
 
-  &:hover:before,
-  &[data-hover="true"]:before {
-    background-color: ${({ theme }) => theme.colors.box.filled[1] + ""};
+  & > ul {
+    opacity: 0;
+    transition: opacity 0.15s;
+    pointer-events: none;
+  }
+
+  &:hover,
+  &[data-hover="true"] {
+    &:before {
+      background-color: ${({ theme }) => theme.colors.box.filled[1] + ""};
+    }
+
+    & > ul {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 `;
