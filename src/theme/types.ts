@@ -75,5 +75,5 @@ export interface Theme {
   change: (mode: UserThemeMode) => void;
   executeTransition: () => void;
   mode: ThemeMode;
-  userMode: UserThemeMode;
+  system: boolean;
 }
