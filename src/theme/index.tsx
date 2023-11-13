@@ -94,7 +94,7 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
       setUserMode(userMode);
       localStorage.setItem(THEME_MODE, userMode);
     },
-    [mode, userMode]
+    [mode]
   );
 
   const variables = {
@@ -117,7 +117,7 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
       change,
       executeTransition: () => {},
     }),
-    [mode]
+    [mode, userMode]
   );
 
   return (
