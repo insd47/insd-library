@@ -50,27 +50,12 @@ const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
     };
 
     // check click outside
-    const handleClickOutside = (e: MouseEvent) => {
+    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
       const { target } = e;
       const node = contextRef.current;
 
       if (node && !node.contains(target as Node)) onClose?.();
     };
-
-    // check window blur
-    useEffect(() => {
-      const h = () => onClose?.();
-
-      window.addEventListener("blur", h);
-      window.addEventListener("resize", h);
-      window.addEventListener("wheel", h);
-
-      return () => {
-        window.removeEventListener("resize", h);
-        window.removeEventListener("wheel", h);
-        window.removeEventListener("blur", h);
-      };
-    }, []);
 
     const layer = document.getElementById(LAYER_NAME);
     const elementBuilder = (visible: boolean) => (
@@ -98,10 +83,18 @@ const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
               setPosition();
               if (open) {
                 window.addEventListener("click", handleClickOutside);
+                window.addEventListener("touchstart", handleClickOutside);
+                window.addEventListener("resize", () => onClose?.());
+                window.addEventListener("blur", () => onClose?.());
+                window.addEventListener("wheel", () => onClose?.());
               }
             }}
             onUnmount={() => {
               window.removeEventListener("click", handleClickOutside);
+              window.removeEventListener("touchstart", handleClickOutside);
+              window.removeEventListener("resize", () => onClose?.());
+              window.removeEventListener("wheel", () => onClose?.());
+              window.removeEventListener("blur", () => onClose?.());
               setIsTriangle(false);
             }}
             builder={elementBuilder}
