@@ -84,6 +84,7 @@ export const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
               if (open) {
                 window.addEventListener("click", handleClickOutside);
                 window.addEventListener("touchstart", handleClickOutside);
+                window.addEventListener("contextmenu", handleClickOutside);
                 window.addEventListener("resize", () => onClose?.());
                 window.addEventListener("blur", () => onClose?.());
                 window.addEventListener("wheel", () => onClose?.());
@@ -92,6 +93,7 @@ export const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
             onUnmount={() => {
               window.removeEventListener("click", handleClickOutside);
               window.removeEventListener("touchstart", handleClickOutside);
+              window.removeEventListener("contextmenu", handleClickOutside);
               window.removeEventListener("resize", () => onClose?.());
               window.removeEventListener("wheel", () => onClose?.());
               window.removeEventListener("blur", () => onClose?.());
