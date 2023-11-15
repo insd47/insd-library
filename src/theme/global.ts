@@ -165,7 +165,7 @@ const global = (theme: Theme) => css`
   }
 
   html {
-    background-color: ${theme.colors.box.background + ""} !important;
+    background-color: ${theme.colors.box.background + ""};
     -ms-touch-action: manipulation;
     touch-action: manipulation;
   }
