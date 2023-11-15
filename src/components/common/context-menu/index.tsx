@@ -105,7 +105,9 @@ export const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
   }
 );
 
-export const useRightClickMenu = (items: ContextMenuItem[]) => {
+export const useRightClickMenu = (
+  items: ContextMenuItem[]
+): [React.FC, React.RefObject<HTMLElement>] => {
   const [open, setOpen] = useState(false);
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
