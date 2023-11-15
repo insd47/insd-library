@@ -59,14 +59,16 @@ const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
 
     // check window blur
     useEffect(() => {
-      window.addEventListener("blur", () => onClose?.());
-      window.addEventListener("resize", () => onClose?.());
-      window.addEventListener("wheel", () => onClose?.());
+      const h = () => onClose?.();
+
+      window.addEventListener("blur", h);
+      window.addEventListener("resize", h);
+      window.addEventListener("wheel", h);
 
       return () => {
-        window.removeEventListener("resize", () => onClose?.());
-        window.removeEventListener("wheel", () => onClose?.());
-        window.removeEventListener("blur", () => onClose?.());
+        window.removeEventListener("resize", h);
+        window.removeEventListener("wheel", h);
+        window.removeEventListener("blur", h);
       };
     }, []);
 
