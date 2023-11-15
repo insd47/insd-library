@@ -5,7 +5,10 @@ export { default as Disabler } from "./components/common/disabler";
 export { default as Box } from "./components/common/box";
 export { TabList, Tab } from "./components/common/tab";
 export { default as Tooltip } from "./components/common/tooltip";
-export { default as ContextMenu } from "./components/common/context-menu";
+export {
+  ContextMenu,
+  useRightClickMenu,
+} from "./components/common/context-menu";
 export { default as LazyMount } from "./components/common/lazy-mount";
 
 // types-common
@@ -33,3 +36,6 @@ export type {
   UserThemeMode,
   Theme,
 } from "./theme/types";
+
+// tools
+export * from "./tools";

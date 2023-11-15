@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import { StyledContextMenu } from "./styles";
 
-import { ContextMenuProps } from "./types";
+import { ContextMenuItem, ContextMenuProps } from "./types";
 import { createPortal } from "react-dom";
 
 import LazyMount from "../lazy-mount";
@@ -25,7 +25,7 @@ import { createItems } from "./components";
 
 import { TriangleContext } from "./check";
 
-const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
+export const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
   ({ items, x: initialX, y: initialY, onClose, open, ...props }, ref) => {
     const [pos, setPos] = useState({ x: initialX, y: initialY });
     const [isTriangle, setIsTriangle] = useState(false);
@@ -105,5 +105,40 @@ const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
   }
 );
 
+export const useRightClickMenu = (items: ContextMenuItem[]) => {
+  const [open, setOpen] = useState(false);
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
+
+  const ref = useRef<HTMLElement>(null);
+
+  const handleContextMenu = (e: MouseEvent) => {
+    e.preventDefault();
+    setOpen(true);
+    setX(e.clientX);
+    setY(e.clientY);
+  };
+
+  useEffect(() => {
+    const node = ref.current;
+
+    if (node) {
+      node.addEventListener("contextmenu", handleContextMenu);
+      return () => node.removeEventListener("contextmenu", handleContextMenu);
+    }
+  }, []);
+
+  const ContextMenuWrapper = () => (
+    <ContextMenu
+      items={items}
+      open={open}
+      onClose={() => setOpen(false)}
+      x={x}
+      y={y}
+    />
+  );
+
+  return [ContextMenuWrapper, ref];
+};
+
 export type { ContextMenuItem } from "./types";
-export default ContextMenu;
