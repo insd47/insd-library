@@ -64,6 +64,7 @@ const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
       };
 
       window.addEventListener("blur", handleWindowBlur);
+      window.addEventListener("resize", () => onClose?.());
 
       return () => {
         window.removeEventListener("resize", () => onClose?.());
