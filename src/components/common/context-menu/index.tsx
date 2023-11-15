@@ -111,16 +111,14 @@ export const useRightClickMenu = <T extends HTMLElement>(
   items: ContextMenuItem[]
 ): [React.FC, React.RefObject<T>] => {
   const [open, setOpen] = useState(false);
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
 
   const ref = useRef<T>(null);
 
   const handleContextMenu = (e: MouseEvent) => {
     e.preventDefault();
+    setPos({ x: e.clientX, y: e.clientY });
     setOpen(true);
-    setX(e.clientX);
-    setY(e.clientY);
   };
 
   useEffect(() => {
@@ -132,13 +130,12 @@ export const useRightClickMenu = <T extends HTMLElement>(
     }
   }, []);
 
-  const ContextMenuWrapper = () => (
+  const ContextMenuWrapper: React.FC = () => (
     <ContextMenu
       items={items}
       open={open}
       onClose={() => setOpen(false)}
-      x={x}
-      y={y}
+      {...pos}
     />
   );
 
