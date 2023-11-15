@@ -105,14 +105,14 @@ export const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
   }
 );
 
-export const useRightClickMenu = (
+export const useRightClickMenu = <T extends HTMLElement>(
   items: ContextMenuItem[]
-): [React.FC, React.RefObject<HTMLElement>] => {
+): [React.FC, React.RefObject<T>] => {
   const [open, setOpen] = useState(false);
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
 
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<T>(null);
 
   const handleContextMenu = (e: MouseEvent) => {
     e.preventDefault();
