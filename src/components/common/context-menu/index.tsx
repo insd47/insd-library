@@ -109,7 +109,7 @@ export const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
 
 export const useRightClickMenu = <T extends HTMLElement>(
   items: ContextMenuItem[]
-): [React.FC, React.RefObject<T>] => {
+): [React.ReactElement, React.RefObject<T>] => {
   const [open, setOpen] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
 
@@ -130,16 +130,16 @@ export const useRightClickMenu = <T extends HTMLElement>(
     }
   }, []);
 
-  const ContextMenuWrapper: React.FC = () => (
+  const ContextMenuInstance = (
     <ContextMenu
       items={items}
+      {...pos}
       open={open}
       onClose={() => setOpen(false)}
-      {...pos}
     />
   );
 
-  return [ContextMenuWrapper, ref];
+  return [ContextMenuInstance, ref];
 };
 
 export type { ContextMenuItem } from "./types";
