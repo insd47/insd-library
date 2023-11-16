@@ -1,8 +1,9 @@
 .rollup.cache
 .storybook
 node_modules
-src
+pkg
 public
+src
 .babelrc
 .env.local
 .eslintrc.json

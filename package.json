@@ -60,8 +60,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "rollup -c",
-    "package": "rollup -c && npm publish --access public",
+    "build": "rollup -c && bun test-pkg.js",
     "build-storybook": "storybook build"
   },
   "type": "module"

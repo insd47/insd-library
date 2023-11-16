@@ -10,6 +10,7 @@ export const StyledContextMenu = styled.ul<
 >`
   position: absolute;
 
+  ${({ width }) => width && `width: ${width + "px"};`}
   background-color: ${({ theme }) => theme.colors.box.foreground[1] + ""};
   border: 1px solid ${({ theme }) => theme.colors.box.border[2] + ""};
   border-radius: ${({ theme }) => theme.variables.radius[2]};

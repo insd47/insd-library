@@ -28,7 +28,6 @@ const config = sources.map((source) => ({
       preserveModulesRoot: "src",
     },
   ],
-  babelHelpers: "bundled",
   plugins: [
     peerDepsExternal(),
     nodeResolve({ extensions }),
@@ -44,6 +43,7 @@ const config = sources.map((source) => ({
     }),
     babel({
       exclude: "node_modules/**",
+      babelHelpers: "bundled",
       presets: [
         [
           "@babel/preset-env",

@@ -67,7 +67,7 @@ const SubMenuContainer: React.FC<
   SubMenuItem & {
     isVisible: boolean;
   }
-> = ({ items, isVisible, ...props }) => {
+> = ({ items, isVisible, width, ...props }) => {
   const subMenuRef = useRef<HTMLUListElement>(null);
   const itemRef = useRef<HTMLLIElement>(null);
   const mouseRef = useRef<MouseEvent>();
@@ -199,6 +199,7 @@ const SubMenuContainer: React.FC<
           items={items}
           isLeft={isLeft}
           isVisible={isVisible}
+          width={width}
         />
       </TriangleContext.Provider>
     </ContentItemFrame>
@@ -206,13 +207,14 @@ const SubMenuContainer: React.FC<
 };
 
 const SubMenu = forwardRef<HTMLUListElement, SubMenuProps>(
-  ({ boundary, items, isLeft, isVisible }, ref) => {
+  ({ boundary, items, isLeft, isVisible, width }, ref) => {
     return (
       <StyledContextMenu
         type="sub-menu"
         boundary={boundary}
         isLeft={isLeft}
         ref={ref}
+        width={width}
       >
         {createItems(items, isVisible)}
       </StyledContextMenu>

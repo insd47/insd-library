@@ -26,7 +26,10 @@ import { createItems } from "./components";
 import { TriangleContext } from "./check";
 
 export const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
-  ({ items, x: initialX, y: initialY, onClose, open, ...props }, ref) => {
+  (
+    { items, x: initialX, y: initialY, onClose, open, width, ...props },
+    ref
+  ) => {
     const [pos, setPos] = useState({ x: initialX, y: initialY });
     const [isTriangle, setIsTriangle] = useState(false);
 
@@ -60,6 +63,7 @@ export const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
     const elementBuilder = (visible: boolean) => (
       <TriangleContext.Provider value={[isTriangle, setIsTriangle]}>
         <StyledContextMenu
+          width={width}
           type="context-menu"
           {...pos}
           ref={contextRef}

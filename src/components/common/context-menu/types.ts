@@ -28,6 +28,7 @@ export interface ActionItem extends Omit<ContentItem, "type"> {
 
 export interface SubMenuItem extends Omit<ContentItem, "type"> {
   type: "submenu";
+  width?: number;
   items: ContextMenuItem[];
 }
 
@@ -47,6 +48,7 @@ export interface ContextMenuProps {
   items: ContextMenuItem[];
   x: number;
   y: number;
+  width?: number;
   onClose?: () => void;
   open: boolean;
 }
@@ -55,12 +57,14 @@ export interface StyledContextMenuProps {
   type: "context-menu";
   x: number;
   y: number;
+  width?: number;
   open: boolean;
 }
 
 export interface SubMenuProps {
   items: ContextMenuItem[];
   isLeft: boolean;
+  width?: number;
   isVisible: boolean;
   boundary: {
     x: number;
@@ -71,6 +75,7 @@ export interface SubMenuProps {
 export interface StyledSubMenuProps {
   type: "sub-menu";
   isLeft: boolean;
+  width?: number;
   boundary: {
     x: number;
     y: number;
