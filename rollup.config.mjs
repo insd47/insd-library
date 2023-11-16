@@ -28,6 +28,7 @@ const config = sources.map((source) => ({
       preserveModulesRoot: "src",
     },
   ],
+  babelHelpers: "bundled",
   plugins: [
     peerDepsExternal(),
     nodeResolve({ extensions }),
