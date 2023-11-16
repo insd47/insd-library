@@ -102,8 +102,9 @@ export const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
               window.removeEventListener("blur", () => onClose?.());
               setIsTriangle(false);
             }}
-            builder={elementBuilder}
-          />,
+          >
+            {elementBuilder}
+          </LazyMount>,
           layerRef.current!
         ) as React.ReactElement<any, string | JSXElementConstructor<any>>)
       : null;

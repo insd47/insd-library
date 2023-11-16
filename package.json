@@ -1,6 +1,6 @@
 {
   "name": "@insd47/library",
-  "version": "0.5.20-alpha",
+  "version": "0.5.21-alpha",
   "author": {
     "name": "insd47",
     "email": "me@insd.dev",
@@ -60,7 +60,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "rollup -c && bun test-pkg.js",
+    "build": "rollup -c",
+    "test": "rollup -c && bun test-pkg.js && cd pkg && bun link",
     "build-storybook": "storybook build"
   },
   "type": "module"

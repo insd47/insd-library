@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 
 interface LazyMountProps {
   enabled: boolean;
-  builder: (visible: boolean) => JSX.Element;
+  children: (visible: boolean) => JSX.Element;
   renderDelay?: number;
   transitionDuration?: number;
   onMount?: () => void;
@@ -13,7 +13,7 @@ interface LazyMountProps {
 
 const LazyMount: React.FC<LazyMountProps> = ({
   enabled,
-  builder,
+  children,
   renderDelay = 0,
   transitionDuration = 0,
   onMount,
@@ -63,7 +63,7 @@ const LazyMount: React.FC<LazyMountProps> = ({
     }
   }, [viewState.visible]);
 
-  return viewState.mounted ? builder(viewState.visible) : null;
+  return viewState.mounted ? children(viewState.visible) : null;
 };
 
 export default LazyMount;

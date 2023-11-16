@@ -10,6 +10,7 @@ export {
   useRightClickMenu,
 } from "./components/common/context-menu";
 export { default as LazyMount } from "./components/common/lazy-mount";
+export { default as Spacing } from "./components/common/spacing";
 
 // types-common
 export type { IconType } from "./components/common/icon/fonts/types";
