@@ -1,24 +1,24 @@
-import { useState, useLayoutEffect } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 const useLayer = (id: string, index: number) => {
-  const [hasLayer, setHasLayer] = useState(false);
+  const ref = useRef<HTMLElement | null>(null);
 
   // create layer
   useLayoutEffect(() => {
-    if (!document.getElementById(id)) {
-      const layer = document.createElement("div");
+    ref.current = document.getElementById(id);
 
-      layer.classList.add("layer");
-      layer.style.zIndex = index.toString();
-      layer.id = id;
+    if (!ref.current) {
+      ref.current = document.createElement("div");
 
-      document.body.appendChild(layer);
+      ref.current.classList.add("layer");
+      ref.current.style.zIndex = index.toString();
+      ref.current.id = id;
+
+      document.body.appendChild(ref.current);
     }
-
-    setHasLayer(true);
   }, []);
 
-  return hasLayer;
+  return ref;
 };
 
 export default useLayer;
