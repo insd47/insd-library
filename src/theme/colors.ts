@@ -162,7 +162,7 @@ export const colors = {
     },
     box: {
       background: absolute.dark.gray.elevation(0),
-      overlay: absolute.dark.gray.alpha(65),
+      overlay: absolute.light.gray.alpha(65),
       foreground: {
         1: absolute.dark.gray.elevation(8),
         2: absolute.dark.gray.elevation(5),
