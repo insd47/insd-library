@@ -40,7 +40,7 @@ const Tooltip: React.FC<TooltipProps> = ({
   const mountedRef = useRef<NodeJS.Timeout | null>(null);
 
   // layer declaration
-  const layerRef = useLayer("__tooltip", LAYER_INDEX);
+  const [hasLayer, layerRef] = useLayer("__tooltip", LAYER_INDEX);
 
   // parent hover listener
   useLayoutEffect(() => {
@@ -200,25 +200,29 @@ const Tooltip: React.FC<TooltipProps> = ({
     }
   }, [isVisible]);
 
-  return createPortal(
-    <StyledTooltip
-      ref={tooltipRef}
-      className={className}
-      position={position}
-      style={style}
-      boundary={boundary}
-      maxWidth={maxWidth}
-      isVisible={isVisible}
-      isHoverable={isHoverable}
-      limits={limits}
-      onMouseEnter={() => setHovers((prev) => ({ ...prev, tooltip: true }))}
-      onMouseLeave={() => setHovers((prev) => ({ ...prev, tooltip: false }))}
-      role="tooltip"
-    >
-      <div>{children}</div>
-    </StyledTooltip>,
-    layerRef.current!
-  );
+  return hasLayer
+    ? createPortal(
+        <StyledTooltip
+          ref={tooltipRef}
+          className={className}
+          position={position}
+          style={style}
+          boundary={boundary}
+          maxWidth={maxWidth}
+          isVisible={isVisible}
+          isHoverable={isHoverable}
+          limits={limits}
+          onMouseEnter={() => setHovers((prev) => ({ ...prev, tooltip: true }))}
+          onMouseLeave={() =>
+            setHovers((prev) => ({ ...prev, tooltip: false }))
+          }
+          role="tooltip"
+        >
+          <div>{children}</div>
+        </StyledTooltip>,
+        layerRef.current!
+      )
+    : null;
 };
 
 export default Tooltip;

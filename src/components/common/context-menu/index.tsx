@@ -34,7 +34,7 @@ export const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
     useImperativeHandle(ref, () => contextRef.current as HTMLUListElement);
 
     // create layer
-    const layerRef = useLayer(LAYER_NAME, LAYER_INDEX);
+    const [hasLayer, layerRef] = useLayer(LAYER_NAME, LAYER_INDEX);
 
     // set position
     const setPosition = () => {
@@ -72,35 +72,37 @@ export const ContextMenu = forwardRef<HTMLUListElement, ContextMenuProps>(
       </TriangleContext.Provider>
     );
 
-    return createPortal(
-      <LazyMount
-        enabled={open}
-        renderDelay={RENDER_DELAY}
-        transitionDuration={TRANSITION_DURATION}
-        onMount={() => {
-          setPosition();
-          if (open) {
-            window.addEventListener("click", handleClickOutside);
-            window.addEventListener("touchstart", handleClickOutside);
-            window.addEventListener("contextmenu", handleClickOutside);
-            window.addEventListener("resize", () => onClose?.());
-            window.addEventListener("blur", () => onClose?.());
-            window.addEventListener("wheel", () => onClose?.());
-          }
-        }}
-        onUnmount={() => {
-          window.removeEventListener("click", handleClickOutside);
-          window.removeEventListener("touchstart", handleClickOutside);
-          window.removeEventListener("contextmenu", handleClickOutside);
-          window.removeEventListener("resize", () => onClose?.());
-          window.removeEventListener("wheel", () => onClose?.());
-          window.removeEventListener("blur", () => onClose?.());
-          setIsTriangle(false);
-        }}
-        builder={elementBuilder}
-      />,
-      layerRef.current!
-    ) as React.ReactElement<any, string | JSXElementConstructor<any>>;
+    return hasLayer
+      ? (createPortal(
+          <LazyMount
+            enabled={open}
+            renderDelay={RENDER_DELAY}
+            transitionDuration={TRANSITION_DURATION}
+            onMount={() => {
+              setPosition();
+              if (open) {
+                window.addEventListener("click", handleClickOutside);
+                window.addEventListener("touchstart", handleClickOutside);
+                window.addEventListener("contextmenu", handleClickOutside);
+                window.addEventListener("resize", () => onClose?.());
+                window.addEventListener("blur", () => onClose?.());
+                window.addEventListener("wheel", () => onClose?.());
+              }
+            }}
+            onUnmount={() => {
+              window.removeEventListener("click", handleClickOutside);
+              window.removeEventListener("touchstart", handleClickOutside);
+              window.removeEventListener("contextmenu", handleClickOutside);
+              window.removeEventListener("resize", () => onClose?.());
+              window.removeEventListener("wheel", () => onClose?.());
+              window.removeEventListener("blur", () => onClose?.());
+              setIsTriangle(false);
+            }}
+            builder={elementBuilder}
+          />,
+          layerRef.current!
+        ) as React.ReactElement<any, string | JSXElementConstructor<any>>)
+      : null;
   }
 );
 

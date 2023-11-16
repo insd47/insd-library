@@ -1,7 +1,11 @@
-import { useLayoutEffect, useRef } from "react";
+import { MutableRefObject, useLayoutEffect, useRef, useState } from "react";
 
-const useLayer = (id: string, index: number) => {
+const useLayer = (
+  id: string,
+  index: number
+): [boolean, MutableRefObject<HTMLElement | null>] => {
   const ref = useRef<HTMLElement | null>(null);
+  const [hasLayer, setHasLayer] = useState(false);
 
   // create layer
   useLayoutEffect(() => {
@@ -16,9 +20,11 @@ const useLayer = (id: string, index: number) => {
 
       document.body.appendChild(ref.current);
     }
+
+    setHasLayer(true);
   }, []);
 
-  return ref;
+  return [hasLayer, ref];
 };
 
 export default useLayer;
