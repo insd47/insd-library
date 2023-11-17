@@ -14,8 +14,8 @@ import { usePointerEvents } from "../../../tools";
 import { useTheme } from "@emotion/react";
 import { InsdColor } from "../../../theme/colors";
 
-import Icon from "@/components/common/icon";
-import Loading from "@/components/common/loading";
+import Icon from "../../common/icon";
+import Loading from "../../common/loading";
 
 const Button = forwardRef<HTMLButtonElement, PropsWithChildren<ButtonProps>>(
   (

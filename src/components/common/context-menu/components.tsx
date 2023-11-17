@@ -14,7 +14,7 @@ import {
   StyledSeperator,
 } from "./styles";
 import Icon from "../icon";
-import CheckIcon from "@/components/input/boolean/icon";
+import CheckIcon from "../../input/boolean/icon";
 import React, {
   HTMLAttributes,
   PropsWithChildren,

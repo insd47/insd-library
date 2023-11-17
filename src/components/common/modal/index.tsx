@@ -4,7 +4,7 @@ import React from "react";
 import { createPortal } from "react-dom";
 import { ModalProps } from "./types";
 import LazyMount from "../lazy-mount";
-import useLayer from "../../../../pkg/dist/tools/useLayer";
+import { useLayer } from "../../../tools";
 
 import { StyledButtons, StyledModal, StyledTemplate } from "./styles";
 import {

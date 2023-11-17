@@ -11,7 +11,7 @@ export {
 } from "./components/common/context-menu";
 export { default as LazyMount } from "./components/common/lazy-mount";
 export { default as Spacing } from "./components/common/spacing";
-export { default as Modal } from "./components/common/modal";
+export { default as Modal, useModal } from "./components/common/modal";
 
 // types-common
 export type { IconType } from "./components/common/icon/fonts/types";

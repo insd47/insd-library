@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 
 import { StyledTooltip } from "./styles";
 import type { TooltipProps, Boundary } from "./types";
-import { useLayer } from "@/tools";
+import { useLayer } from "../../../tools";
 
 const TRANSITION_DURATION = 200;
 const LAYER_INDEX = 202;

@@ -1,6 +1,6 @@
 import { CSSProperties, HTMLAttributes, InputHTMLAttributes } from "react";
 
-import { IconType } from "@/.";
+import { IconType } from "../../common/icon/fonts/types";
 
 export interface TextfieldProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
