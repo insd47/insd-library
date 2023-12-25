@@ -55,14 +55,14 @@ const StyledSwitch = styled.div<{
 
   ${({ size }) =>
     size === "small"
-      ? `width: 32px;
+      ? `width: 33px;
          height: 18px;
          border-radius: 9px;`
       : size === "medium"
       ? `width: 44px;
          height: 24px;
          border-radius: 12px;`
-      : `width: 53px;
+      : `width: 51px;
          height: 28px;
          border-radius: 14px;`}
 `;
