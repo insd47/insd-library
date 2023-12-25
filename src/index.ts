@@ -5,10 +5,7 @@ export { default as Disabler } from "./components/common/disabler";
 export { default as Box } from "./components/common/box";
 export { TabList, Tab } from "./components/common/tab";
 export { default as Tooltip } from "./components/common/tooltip";
-export {
-  ContextMenu,
-  useRightClickMenu,
-} from "./components/common/context-menu";
+export { ContextMenu, useRightClickMenu } from "./components/common/context-menu";
 export { default as LazyMount } from "./components/common/lazy-mount";
 export { default as Spacing } from "./components/common/spacing";
 export { default as Modal, useModal } from "./components/common/modal";
@@ -22,6 +19,7 @@ export type { ContextMenuItem } from "./components/common/context-menu/types";
 export { default as Button } from "./components/input/button";
 export { default as Textfield } from "./components/input/textfield";
 export { default as Boolean } from "./components/input/boolean";
+export { default as Switch } from "./components/input/switch";
 
 // types-input
 export type { ButtonType, ButtonSize } from "./components/input/button/types";
