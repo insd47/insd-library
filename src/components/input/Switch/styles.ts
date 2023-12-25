@@ -14,6 +14,10 @@ const StyledSwitch = styled.div<{
   background-color: ${({ theme }) => theme.colors.box.background + ""};
   transition: background-color 0.1s, border-color 0.1s;
 
+  & > input {
+    display: none;
+  }
+
   &:after {
     content: "";
     position: absolute;
